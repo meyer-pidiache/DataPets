@@ -1,1 +1,1 @@
-# DataPets
+# DataPets - Establecimientos amigables para mascotas
