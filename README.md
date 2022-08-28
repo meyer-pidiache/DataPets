@@ -3,7 +3,7 @@
 ## Integrantes
 
 - Narda Alejandra Amador Robayo
-- Yesica Paola Mican Romero
+- Yesica Paola Mican Romero - Desarrollador Frontend
 -
--Sharom Julieth Ferreira Vela 
+- Sharom Julieth Ferreira Vela 
 - Blanca Marlen Pidiache Tabaco - Desarrollador Backend
