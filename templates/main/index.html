@@ -3,8 +3,78 @@
 {% block main %}
 
     <!-- Aquí va la página principal -->
-    <a href="sign-in">Inicio de sesión</a>
-    <br>
-    <a href="sign-up">Registrarse</a>
+    <body class="container-fluid">
+        <img src="../../static/assets/img/huella1.png" class="rounded float-start" width="80" height="60" alt="">
+        <p class="fs-2">DataPet</p>
+        <br>
+        <img class="ImagenPerros" src="../../static/assets/img/personaconperros.jpg" class="img-fluid" alt="" >
+        
+        <div class="FC1">
+          <div class="FC1_1">
+            
+            <p class="text-center">¿Buscando el lugar ideal para ir con tú mascota?</p>
+            <p class="text-start">Hola! Aqui en DataPet podrás obtener información de aquellos establecimientos donde podrás entrar con tu mascota!</p><br>
+            <p class="text-start">Ey! Recuerda registrarte para tener acceso a la búsqueda detallada para ir a esos lugares especiales con tu mascota</p>
+            
+          </div>
+          <div class="FC1_2">
+            <div class="container">
+              <div class="login-container">
+                <div class="register">
+                  <h2>Registrarse</h2>
+                  <form action="">
+                    <input type="text" placeholder="Nombre" class="nombre">
+                    <input type="text" placeholder="Correo" class="correo">
+                    <input type="password" placeholder="Contraseña" class="pass">
+                    <input type="password" placeholder="Confirma contraseña" class="repass">
+                    <input type="submit" class="submit" value="REGISTRARSE">
+                  </form>
+                </div>
+                <div class="login">
+                  <h2>Iniciar Sesión</h2>
+                  <div class="login-items">
+                    <form action="">
+                      <input type="text" placeholder="Usuario" class="nombre">
+                      <input type="password" placeholder="Contraseña" class="pass">
+                    </form>
+                    <p class="text-sm-start">¿Olvidó su contraseña?</p>
+                    <form action="Usuario.html">
+                      <button class="fb"><i class="fab fa-facebook-f"></i>Acceder</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+    
+        <h1>Reseñas</h1><br>
+        <div class="FC2">
+          <div class="FC2_2">
+            <div class="FC2_1">
+              <img src="../../static/assets/img/Senor1.jpg" class="per">
+              <p class="text-md-start">Start aligned text on viewports sized MD (medium) or wider.</p>
+            </div>
+            <div class="FC2_1">
+              <img src="{../../static/assets/img/Senora1.jpg" class="per">
+              <p class="text-md-start">Start aligned text on viewports sized MD (medium) or wider.</p>
+            </div>
+          </div>
+          <div class="FC2_2">
+          <div class="FC2_1">
+            <img src="../../static/assets/img/Senor2.jpg" class="per">
+            <p class="text-md-start">Start aligned text on viewports sized MD (medium) or wider.</p>
+          </div>
+          <div class="FC2_1">
+            <img src="../../static/assets/img/Senora2.jpg" class="per">
+            <p class="text-md-start">Start aligned text on viewports sized MD (medium) or wider.</p>
+          </div>
+        </div>
+        </div>
+        
+        <script src="../../static/assets/css/bootstrap.bundle.min.js"></script>
+    </body>
+    
 
 {% endblock main %}

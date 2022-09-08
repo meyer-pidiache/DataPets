@@ -9,6 +9,7 @@
     {% include 'partials/header.html' %}
 
     <main>
+        {% include 'partials/index.html' %}
         {% block main %}
         
         {% endblock %}
@@ -16,8 +17,8 @@
 
     {% include 'partials/footer.html' %}
 
-    <script src="{% static 'assets/js/script.js' %}"></script> <!-- la ruta de la carpeta static está predefinida, sólo es completar el resto de la dirección --> 
-
+    <!-- <script src="{% static 'assets/js/script.js' %}"></script> --> <!-- la ruta de la carpeta static está predefinida, sólo es completar el resto de la dirección --> 
+    <script src="../../static/assets/js/General.js"></script>
 </body>
 
 </html>
