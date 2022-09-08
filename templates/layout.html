@@ -4,9 +4,9 @@
 <html lang="es">
 {% include 'partials/head.html' %} 
 
-<body>
+<body class="container-fluid">
 
-    {% include 'partials/header.html' %}
+    {% include 'partials/nav.html' %}
 
     <main>
         {% block main %}
@@ -16,7 +16,8 @@
 
     {% include 'partials/footer.html' %}
 
-    <script src="{% static 'assets/js/script.js' %}"></script> <!-- la ruta de la carpeta static está predefinida, sólo es completar el resto de la dirección --> 
+    <!-- <script src="{% static 'assets/js/script.js' %}"></script> --> <!-- la ruta de la carpeta static está predefinida, sólo es completar el resto de la dirección --> 
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 </body>
 
