@@ -233,3 +233,8 @@ h1{
       transform: translateX(-50%) rotate(90deg);
     }
   }
+
+.bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
