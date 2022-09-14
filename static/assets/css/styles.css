@@ -9,7 +9,6 @@
 .ImagenPerros{
     position: relative;
     opacity: 0.3;
-    height: 100%;
     width: 100%;
 }
 .per{
@@ -17,10 +16,12 @@
     height: 200px;
 }
 .FC1{
-    display: flex;
-    padding: 10px;
-    position: relative;
-    top: -700px;   
+    display: flex; 
+    margin-top: 8%;
+    position: absolute;
+    top: 0;   
+    flex: 3 1 auto;
+    text-align: center;
 }
 
 .FC2{
@@ -28,25 +29,14 @@
     display: flex;
     padding: 10px;
     position: relative;
-    top: -550px;
+    top: auto;
     background-color: black;
-}
-
-.FC1_1{
-    flex: 3 1 auto;
-    text-align: center;
-}
-.FC1_2{
-
-    flex: 3 1 auto;
-    text-align: center;
-    
+    flex: 1 1 auto;
 }
 
 h1{
   position: relative;
   text-align: center;
-  top: -550px;
 }
 
 .FC2_1{
@@ -54,15 +44,16 @@ h1{
     flex: 1 1 auto;
     width: 50%;
 }
+
 .FC2_2{
-    display: block;
+    display: flex;
     flex: 1 1 auto;
     width: 50%;
 }
 
 
 .text-center{
-    font-size: 80px;
+    font-size: 500%;
     color: rgb(0, 0, 0);
     text-shadow: 3px 3px 2px rgb(255, 255, 255);
 
@@ -71,8 +62,9 @@ h1{
     text-align: center;
     color: white;
 }
-.text-start{
-    font-size: 40px;
+.text-start2{
+    text-align: center;
+    font-size: 200%;
     color: rgb(255, 255, 255);
     text-shadow: 2px 2px 2px black;
 
@@ -82,20 +74,8 @@ h1{
   color: white;
 }
 
-.FC1_2 input{
-    width: 500px;
-    padding: 5px 0;
-    margin: 10px;
-    border-top-style: none;
-    border-left: none;
-    border-right: none;
-}
-
-
 .container{
-    width: 100%;
     padding: 10px;
-    display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 6px 20px 10px rgb(82, 82, 82);
@@ -233,3 +213,8 @@ h1{
       transform: translateX(-50%) rotate(90deg);
     }
   }
+
+.bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
