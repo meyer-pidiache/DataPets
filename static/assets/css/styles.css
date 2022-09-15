@@ -12,12 +12,12 @@
     width: 100%;
 }
 .per{
-    width: 150px;
+    width: 133px;
     height: 200px;
 }
 .FC1{
-    display: flex;
-    margin: 8%;
+    display: flex; 
+    margin-top: 8%;
     position: absolute;
     top: 0;   
     flex: 3 1 auto;
@@ -43,10 +43,11 @@ h1{
     display: flex;
     flex: 1 1 auto;
     width: 50%;
+    padding: 1%;
 }
 
 .FC2_2{
-    display: flex;
+    display: block;
     flex: 1 1 auto;
     width: 50%;
 }
@@ -62,7 +63,8 @@ h1{
     text-align: center;
     color: white;
 }
-.text-start{
+.text-start2{
+    text-align: center;
     font-size: 200%;
     color: rgb(255, 255, 255);
     text-shadow: 2px 2px 2px black;
