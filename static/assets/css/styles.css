@@ -12,7 +12,7 @@
     width: 100%;
 }
 .per{
-    width: 150px;
+    width: 133px;
     height: 200px;
 }
 .FC1{
@@ -43,10 +43,11 @@ h1{
     display: flex;
     flex: 1 1 auto;
     width: 50%;
+    padding: 1%;
 }
 
 .FC2_2{
-    display: flex;
+    display: block;
     flex: 1 1 auto;
     width: 50%;
 }
