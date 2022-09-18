@@ -9,19 +9,23 @@
 .ImagenPerros{
     position: relative;
     opacity: 0.3;
+    padding: 20px;
     width: 100%;
+    box-sizing: border-box;
 }
+
 .per{
     width: 133px;
     height: 200px;
 }
 .FC1{
-    display: flex; 
-    margin-top: 8%;
-    position: absolute;
-    top: 0;   
-    flex: 3 1 auto;
+    width:auto ;
+    position: relative;
+    top: 0;
+    display: flex;   
+    background: transparent url('assets/img/personaconperros.jpg');
     text-align: center;
+    box-sizing: border-box;
 }
 
 .FC2{
@@ -62,10 +66,23 @@ h1{
 .text-sm-start{
     text-align: center;
     color: white;
+    font-size: 100%;
 }
-.text-start2{
+.p-3 {
+    width: 100%;
     text-align: center;
-    font-size: 200%;
+    font-size: 150%;
+    color: rgb(35, 31, 31);
+   text-shadow:  2px 2px 2px#fff;
+  }
+  .t-3{
+    z-index: 100;
+    width: 100%;
+  }
+.text-start2{
+    width: 100%;
+    text-align: center;
+    font-size: 100%;
     color: rgb(255, 255, 255);
     text-shadow: 2px 2px 2px black;
 
@@ -76,7 +93,8 @@ h1{
 }
 
 .container{
-    padding: 10px;
+    padding: 20px;
+    width: 50%;
     justify-content: center;
     align-items: center;
     box-shadow: 6px 20px 10px rgb(82, 82, 82);
@@ -193,14 +211,15 @@ h1{
     border-style: none;
     color: #fff;
     position: relative;
-    top: 75px;
     box-shadow: 2px 4px 10px rgb(0, 0, 0) ;
   }
    
    
-  @media only screen and (max-width: 540px){
+  @media only screen and (max-width: 800px){
+    
     .login-container{
       display: block;
+      width: auto;
     }
    
     .register, .login{
@@ -213,9 +232,31 @@ h1{
       left: 50%;
       transform: translateX(-50%) rotate(90deg);
     }
+
+  .FC2{
+      display: block ;
+  }
   }
 
 .bi {
       vertical-align: -.125em;
       fill: currentColor;
     }
+
+@media screen and (max-width: 1000px) {
+  .p-3 {
+      width: 100%;
+  }
+  .text-start2 {
+      width: 100%;
+  }
+  .container{
+      width: 100%;
+  }
+
+.FC1 {
+    display: block;
+
+}
+
+}
