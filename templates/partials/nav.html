@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg bg-light position-fixed t-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
       <img src="{% static 'assets/img/huella1.png' %}" alt="" width="40" height="35"
         class="d-inline-block align-text-top">
       DataPets
@@ -14,16 +14,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Acerca de nosotros
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Que es DataPets?</a></li>
-            <li><a class="dropdown-item" href="#">Donde encontrarnos!</a></li>
+            <li><a class="dropdown-item" href="/que_es_datapets/">¿Qué es DataPets?</a></li>
+            <li><a class="dropdown-item" href="/donde_encontrarnos/">¿Dónde encontrarnos?</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Contáctenos</a></li>
+            <li><a class="dropdown-item" href="/contactenos/">Contáctenos</a></li>
           </ul>
         </li>
         <li class="nav-item">
