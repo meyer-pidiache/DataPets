@@ -1,0 +1,36 @@
+<div>
+    <div class="container">
+        <div class="login-container">
+            <div class="register">
+                <h2>Registrarse</h2>
+                <form action="/sign-up" method="post">
+                    {% csrf_token %}
+                    <input name="username" type="text" placeholder="Usuario">
+                    <input name="email" type="text" placeholder="Correo">
+                    <input name="password1" type="password" placeholder="Contraseña">
+                    <input name="password2" type="password" placeholder="Confirma contraseña">
+                    <input type="submit" class="submit" value="REGISTRARSE">
+                </form>
+            </div>
+            <div class="login">
+                <h2>Iniciar Sesión</h2>
+                <div class="login-items">
+                    <form action="/sign-in" method="post">
+                        {% csrf_token %}
+                        <input name="username" type="text" placeholder="Usuario">
+                        <input name="password" type="password" placeholder="Contraseña">
+                        <p class="text-sm-start">¿Olvidó su contraseña?</p>
+                        <div class="form-group">
+                            {% for message in messages %}
+                            <div style="color: red;">
+                                {{message}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <button class="fb"><i class="fab fa-facebook-f"></i>Acceder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
