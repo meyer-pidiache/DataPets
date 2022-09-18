@@ -1,21 +1,32 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-{% include 'partials/head.html' %} 
+
+<head>
+    {% include 'partials/head.html' %}
+
+    {% block link %}
+
+    {% endblock link %}
+
+</head>
 
 <body class="container-fluid">
-
-    {% include 'partials/nav.html' %}
+    
+    <header>
+        {% include 'partials/nav.html' %}
+    </header>
 
     <main>
         {% block main %}
-        
-        {% endblock %}
+
+        {% endblock main %}
     </main>
 
     {% include 'partials/footer.html' %}
 
-    <!-- <script src="{% static 'assets/js/script.js' %}"></script> --> <!-- la ruta de la carpeta static está predefinida, sólo es completar el resto de la dirección --> 
+    <!-- <script src="{% static 'assets/js/script.js' %}"></script> -->
+    <!-- la ruta de la carpeta static está predefinida, sólo es completar el resto de la dirección -->
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 </body>

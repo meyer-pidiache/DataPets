@@ -1,4 +1,3 @@
-from email import message
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
@@ -15,7 +14,7 @@ def sign_up(request):
         if password1 == password2:
             password = password1
         else:
-            message.info(request, 'Las contraseñas no coinciden')
+            messages.info(request, 'Las contraseñas no coinciden')
             return redirect('/')
 
         if User.objects.filter(username=username).exists():

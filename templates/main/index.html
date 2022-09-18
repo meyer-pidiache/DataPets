@@ -3,79 +3,24 @@
 
 {% block main %}
 
-<img class="ImagenPerros" src="{% static 'assets/img/personaconperros.jpg' %}" class="img-fluid" alt="">
+{% include 'main/index/carousel.html' %}
 
 <div class="FC1 mx-1">
 
   <div class="p-3">
     <h1>¿Buscando el lugar ideal para ir con tú mascota?</h1>
-    <p class="text-start2">Hola! Aqui en DataPet podrás obtener información de aquellos establecimientos donde podrás
+    <p class="text-start2">¡Hola! Aqui en DataPet podrás obtener información de aquellos establecimientos donde podrás
       entrar con tu mascota!</p><br>
     <p class="text-start2">Ey! Recuerda registrarte para tener acceso a la búsqueda detallada para ir a esos lugares
       especiales con tu mascota</p>
   </div>
 
-  <div>
-    <div class="container">
-      <div class="login-container">
-        <div class="register">
-          <h2>Registrarse</h2>
-          <form action="/sign-up" method="post">
-            {% csrf_token %}
-            <input name="username" type="text" placeholder="Usuario">
-            <input name="email" type="text" placeholder="Correo">
-            <input name="password1" type="password" placeholder="Contraseña">
-            <input name="password2" type="password" placeholder="Confirma contraseña">
-            <input type="submit" class="submit" value="REGISTRARSE">
-          </form>
-        </div>
-        <div class="login">
-          <h2>Iniciar Sesión</h2>
-          <div class="login-items">
-            <form action="/sign-in" method="post">
-              {% csrf_token %}
-              <input name="username" type="text" placeholder="Usuario">
-              <input name="password" type="password" placeholder="Contraseña">
-              <p class="text-sm-start">¿Olvidó su contraseña?</p>
-              <div class="form-group">
-                {% for message in messages %}
-                <div style="color: red;">
-                  {{message}}
-                </div>
-                {% endfor %}
-              </div>
-              <button class="fb"><i class="fab fa-facebook-f"></i>Acceder</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include 'main/index/login.html' %}
 
 </div>
 
 <h1 class="pt-5">Reseñas</h1><br>
-<div class="FC2">
-  <div class="FC2_2">
-    <div class="FC2_1">
-      <img src="{% static 'assets/img/senor1.jpg' %}" class="per">
-      <p class="text-md-start p-2">Start aligned text on viewports sized MD (medium) or wider.</p>
-    </div>
-    <div class="FC2_1">
-      <img src="{% static 'assets/img/Senora1.jpg' %}" class="per">
-      <p class="text-md-start p-2">Start aligned text on viewports sized MD (medium) or wider.</p>
-    </div>
-  </div>
-  <div class="FC2_2">
-    <div class="FC2_1">
-      <img src="{% static 'assets/img/senor2.jpg' %}" class="per">
-      <p class="text-md-start p-2">Start aligned text on viewports sized MD (medium) or wider.</p>
-    </div>
-    <div class="FC2_1">
-      <img src="{% static 'assets/img/senora2.jpg' %}" class="per">
-      <p class="text-md-start p-2">Start aligned text on viewports sized MD (medium) or wider.</p>
-    </div>
-  </div>
-</div>
+
+{% include 'main/index/reviews.html' %}
 
 {% endblock main %}
