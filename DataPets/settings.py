@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'DataPets.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('ENGINE'),
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': config('NAME'),
         'USER': config('USER'),
         'PASSWORD': config('PASSWORD'),
