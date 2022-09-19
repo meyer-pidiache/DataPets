@@ -17,14 +17,14 @@ def sign_up(request):
             password = password1
         else:
             messages.info(request, 'Las contraseñas no coinciden')
-            return redirect('/')
+            return redirect('/#login_section')
 
         if User.objects.filter(username=username).exists():
             messages.info(request, 'Nombre de usuario ya está en uso')
-            return redirect('/')
+            return redirect('/#login_section')
         elif User.objects.filter(email=email).exists():
             messages.info(request, 'Correo ya está en uso')
-            return redirect('/')
+            return redirect('/#login_section')
         else:
             user = User.objects.create_user(username=username, password=password, email=email)
             user.save()
@@ -46,7 +46,7 @@ def sign_in(request):
             return redirect('user/')
         else:
             messages.info(request, 'Nombre de usuario o contraseña inválido')
-            return redirect('/')
+            return redirect('/#login_section')
     else:
         return render(request, 'main/index.html')
 
