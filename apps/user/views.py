@@ -1,7 +1,9 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
 
+@login_required(login_url='/')
 def user(request):
     return render(request, 'user/user.html')
 
@@ -30,7 +32,7 @@ def sign_up(request):
             auth.login(request, user)
             return redirect('user/')
     else:
-        return render(request, '/')
+        return render(request, 'main/index.html')
 
 def sign_in(request):
     if request.method == 'POST':
@@ -46,7 +48,7 @@ def sign_in(request):
             messages.info(request, 'Nombre de usuario o contraseña inválido')
             return redirect('/')
     else:
-        return render(request, '/')
+        return render(request, 'main/index.html')
 
 def logout_user(request):
     auth.logout(request)
