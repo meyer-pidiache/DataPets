@@ -19,7 +19,7 @@
                         {% csrf_token %}
                         <input name="username" type="text" placeholder="Usuario">
                         <input name="password" type="password" placeholder="Contraseña">
-                        <p class="text-sm-start">¿Olvidó su contraseña?</p>
+                        <a href="password_reset/" class="text-sm-start">¿Olvidó su contraseña?</a>
                         <div class="form-group">
                             {% for message in messages %}
                             <div style="color: red;">
