@@ -35,5 +35,6 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           HOST: ${{ secrets.HOST }}
           PORT: ${{ secrets.PORT }}
+          EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
       run: |
         python manage.py test
