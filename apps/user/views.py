@@ -80,7 +80,7 @@ def password_reset_request(request):
                         'site_name': 'DataPets',
                         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                         'token': default_token_generator.make_token(user),
-                        'protocol': 'http',
+                        'protocol': 'https',
                     }
                     email = render_to_string(email_template_name, parameters)
                     try:
