@@ -39,7 +39,7 @@ def sign_up(request):
             user.save()
             user = auth.authenticate(username=username, password=password)
             auth.login(request, user)
-            return redirect('user/')
+            return redirect('user:user')
     else:
         return render(request, 'main/index.html')
 
@@ -52,7 +52,7 @@ def sign_in(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('user/')
+            return redirect('user:user')
         else:
             messages.info(request, 'Nombre de usuario o contraseña inválido')
             return redirect('/#login_section')
@@ -87,7 +87,7 @@ def password_reset_request(request):
                         send_mail(subject, email, '', [user.email], fail_silently=False)
                     except:
                         return HttpResponse('Header inválido')
-                    return redirect('/password_reset_done/')
+                    return redirect('user:password_reset_done')
                 
     else:
         password_form = PasswordResetForm()
