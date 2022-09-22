@@ -88,7 +88,8 @@ def password_reset_request(request):
                     except:
                         return HttpResponse('Header inválido')
                     return redirect('user:password_reset_done')
-                
+            else:
+                return redirect('main:home')
     else:
         password_form = PasswordResetForm()
     context = {
