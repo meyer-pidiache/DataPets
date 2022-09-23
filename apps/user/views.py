@@ -63,6 +63,9 @@ def logout_user(request):
     auth.logout(request)
     return redirect('/')
 
+def update_user(request):
+    return render(request, 'user/update_user.html')
+
 def password_reset_request(request):
     if request.method == 'POST':
         password_form = PasswordResetForm(request.POST)
@@ -93,7 +96,6 @@ def password_reset_request(request):
     else:
         password_form = PasswordResetForm()
     context = {
-        'title': 'Restablecer contraseña',
         'password_form': password_form,
     }
     return render(request, 'user/password_reset.html', context)

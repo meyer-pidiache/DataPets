@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'apps.main.apps.MainConfig',
     'apps.user.apps.UserConfig',
+    'apps.places.apps.PlacesConfig',
 
     'crispy_forms',
 ]
