@@ -1,9 +1,14 @@
 {% extends 'layout.html' %}
 {% load static %}
+{% block title %}Perfil de usuario{% endblock title %}
+
 
 {% block main %}
 
     <h1>Bienvenido {{ user.username }}</h1>
     
+    <a href="{% url 'places:places' %}">Empezar</a>
+
+    <a href="{% url 'user:update_user' %}">Actualizar información</a>
 {% endblock main %}
     

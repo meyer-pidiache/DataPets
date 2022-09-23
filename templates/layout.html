@@ -4,15 +4,11 @@
 
 <head>
     {% include 'partials/head.html' %}
-
-    {% block link %}
-
-    {% endblock link %}
-
+    <title>{% block title %}{% endblock title %}</title>
 </head>
 
 <body class="container-fluid">
-    
+
     <header>
         {% include 'partials/nav.html' %}
     </header>
