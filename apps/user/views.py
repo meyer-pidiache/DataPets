@@ -79,7 +79,7 @@ def password_reset_request(request):
                     parameters = {
                         'username': user.username,
                         'email': user.email,
-                        'domain': 'datapets.pythonanywhere.com',
+                        'domain': 'datapets.herokuapp.com',
                         'site_name': 'DataPets',
                         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                         'token': default_token_generator.make_token(user),

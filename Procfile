@@ -1,1 +1,1 @@
-web: gunicorn datapets.wsgi:application --log-file -
+web: gunicorn DataPets.wsgi:application --log-file -
