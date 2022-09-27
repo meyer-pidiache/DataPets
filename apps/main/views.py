@@ -3,7 +3,7 @@ from .models import Review
 
 def home(request):
     context = {'title': 'DataPets', 'reviews': 
-        Review.objects.all()
+        Review.objects.order_by('-pub_date')[:6]
     }
     return render(request, 'main/index.html', context)
 

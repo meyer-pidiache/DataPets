@@ -1,12 +1,13 @@
 {% load static %}
-<div class="FC2">
+<div class="row g-3 FC2">
     {% for i in reviews %}
-    <div class="FC2_2">
+    <div class="col-md-12 col-lg-6 FC2_2">
         <div class="FC2_1">
-            <img src="{% static 'assets/img/senor1.jpg' %}" class="per">
+            <img src="{% static 'assets/img/default.jpg' %}" class="per">
             <p class="text-md-start p-2">
-                <b>{{i.user}}</b>
-                {{i.review_text}}
+                <b>{{ i.user }}</b>
+                <i>{{ i.pub_date }}</i>
+                {{ i.review_text }}
             </p>
         </div>
     </div>
