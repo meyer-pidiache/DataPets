@@ -13,7 +13,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phoneNumberRegex = RegexValidator(regex = r"^\+?57?\d{8,15}$")
     phone_number = models.CharField(validators = [phoneNumberRegex], max_length = 16, null=True, blank=True)
-    gender = models.OneToOneField(Gender, on_delete=models.CASCADE, null=True, blank=True)
+    gender = models.ForeignKey(Gender, on_delete=models.CASCADE, null=True, blank=True)
     profile_picture = models.ImageField(upload_to='media/profiles/',
                                         default='media/profiles/default.jpg', 
                                         null=True, blank=True, editable=True,
