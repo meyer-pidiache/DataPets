@@ -1,0 +1,98 @@
+.y1 {
+    /* fallback for old browsers */
+    background: #f6d365;
+    text-size-adjust: 40px;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        padding: 20px;
+        width: 90%;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border-radius: 6px;
+        box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1)
+    }
+    
+    .comment-box{
+        
+        padding:5px;
+    }
+    
+    
+    
+    .comment-area textarea{
+       resize: none; 
+            border: 1px solid #ad9f9f;
+    }
+    
+    
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #ffffff;
+        outline: 0;
+        box-shadow: 0 0 0 1px rgb(255, 0, 0) !important;
+    }
+    
+
+    .rating>input {
+        display: none
+    }
+    
+    .rating>label {
+            position: relative;
+        width: 19px;
+        font-size: 25px;
+        color: #ff0000;
+        cursor: pointer;
+    }
+    
+    .rating>label::before {
+        content: "\2605";
+        position: absolute;
+        opacity: 0
+    }
+    
+    .rating>label:hover:before,
+    .rating>label:hover~label:before {
+        opacity: 1 !important
+    }
+    
+    .rating>input:checked~label:before {
+        opacity: 1
+    }
+    
+    .rating:hover>input:checked~label:before {
+        opacity: 0.4
+    }
+    
+    .ntxt {
+        font-style: italic;
+        color: black;
+        font-family: cursive;
+        font-size: larger;
+    }
+
+    .mtx {
+        font-style: italic;
+        color: black;
+        font-family: cursive;
+        font-size: larger;
+        box-shadow: 5px 8px 10px rgb(244, 169, 227);
+        text-shadow: 5px 8px 10px rgb(159, 11, 124);;
+    }
+    
+    
+   
+    
+  

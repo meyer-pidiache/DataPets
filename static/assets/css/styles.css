@@ -2,16 +2,16 @@
   background-color: aqua;
 }
 
-.container-fluid {
-  background-color: rgb(255, 255, 255);
-}
-
 .ImagenPerros {
   position: relative;
   opacity: 0.3;
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
+}
+.media{
+  width: 80%;
+  padding: 20px;
 }
 
 .per {
@@ -88,20 +88,13 @@ h1 {
   color: white;
 }
 
-.container {
-  padding: 20px;
-  width: 50%;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 6px 20px 10px rgb(82, 82, 82);
-}
-
 .login-container {
   display: flex;
+  padding: 20px;
   width: 650px;
   height: auto;
   background: #fff;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 6px 20px 10px rgb(82, 82, 82);
 }
 
 .register,
@@ -211,6 +204,14 @@ h1 {
   box-shadow: 2px 4px 10px rgb(0, 0, 0);
 }
 
+.H-1 {
+  display: flex;
+}
+
+.flx2{
+  width: 50%;
+}
+
 @media only screen and (max-width: 800px) {
     .login-container {
       display: block;
@@ -228,10 +229,18 @@ h1 {
       left: 50%;
       transform: translateX(-50%) rotate(90deg);
     }
-  
+
+    .H-1 {
+      display: block;
+    }
+    .flx2{
+      width: 100%;
+    }
+      
     .FC2 {
       display: block;
     }
+    
   }
 
 .bi {
@@ -252,6 +261,56 @@ h1 {
 
   .FC1 {
     display: block;
+  
+  
   }
+  
+}
+.fw-semibold {
+font-size: large;
+color: black;
+position: relative;
+text-shadow: 2px 4px 6px rgb(238, 228, 228);
+}
 
+
+.tcolor {
+  font-family: cursive;
+  color: black;
+  text-shadow: 5px 8px 10px rgb(240, 127, 213);
+}
+
+.video{
+  width: auto;
+}
+
+.container{
+
+  background: url(../img/fondo.jpg) ;
+  background-size: cover;
+  background-attachment: fixed ;
+
+
+}
+.map-container{
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+  align-items: center;
+  
+}
+.map-container iframe{
+  left:0;
+  top:0;
+  height:100%;
+  width:80%;
+  position:absolute;
+  
+}
+.ab2 {
+  font-family: cursive;
+  font-size: 30px;
+  color: black;
+  text-shadow: 5px 8px 10px rgb(245, 206, 236);
 }
