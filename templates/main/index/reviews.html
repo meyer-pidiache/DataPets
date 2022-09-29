@@ -1,23 +1,15 @@
 {% load static %}
-<div class="FC2">
-    <div class="FC2_2">
+<div class="row g-3 FC2">
+    {% for review in reviews %}
+    <div class="col-md-12 col-lg-6 FC2_2">
         <div class="FC2_1">
-            <img src="{% static 'assets/img/senor1.jpg' %}" class="per">
-            <p class="text-md-start p-2"> "Hola! Fui a este lugar hace 2 semanas y fue la mejor experiencia! 100% recomendado"</p>
-        </div>
-        <div class="FC2_1">
-            <img src="{% static 'assets/img/Senora1.jpg' %}" class="per">
-            <p class="text-md-start p-2"> "Debo decir que tener una aplicación que permita saber donde puedes ir con tu mascota es lo mejor! Gracias!"</p>
-        </div>
-    </div>
-    <div class="FC2_2">
-        <div class="FC2_1">
-            <img src="{% static 'assets/img/senor2.jpg' %}" class="per">
-            <p class="text-md-start p-2">"Es una excelente manera de guiar y saber donde puedo ir con mi mascota para no dejarla sola en casa! Lo mejor DataPets"</p>
-        </div>
-        <div class="FC2_1">
-            <img src="{% static 'assets/img/senora2.jpg' %}" class="per">
-            <p class="text-md-start p-2"> "Me encanta! Siempre salgo con mi mascota y me gusta tener una aplicación donde puedo revisar nuevos lugares para visitar con mi peludita"</p>
+            <img src="media/{{ review.user.profile.profile_picture }}" class="per">
+            <p class="text-md-start p-2">
+                <b>{{ review.user }}</b>
+                <i>{{ review.pub_date }}</i>
+                {{ review.review_text }}
+            </p>
         </div>
     </div>
+    {% endfor %}
 </div>

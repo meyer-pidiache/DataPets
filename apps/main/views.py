@@ -1,8 +1,12 @@
-from multiprocessing import context
 from django.shortcuts import render
+from .models import Review
 
 def home(request):
-    context = {'title': 'DataPets'}
+    reviews = list(Review.objects.order_by('-pub_date')[:6])
+
+    context = { 'title': 'DataPets', 
+                'reviews': reviews,
+    }
     return render(request, 'main/index.html', context)
 
 def about_1(request):
