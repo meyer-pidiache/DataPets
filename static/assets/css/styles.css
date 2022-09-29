@@ -312,5 +312,31 @@ text-shadow: 2px 4px 6px rgb(238, 228, 228);
   font-family: cursive;
   font-size: 30px;
   color: black;
-  text-shadow: 5px 8px 10px rgb(245, 206, 236);
+  text-shadow: 5px 8px 10px #d5dcf7;
+}
+
+.container2 {
+  display: block;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  background: rgb(170, 198, 245);
+  box-shadow: 6px 20px 10px rgb(82, 82, 82);
+}
+
+.container3 {
+  display: block;
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  background: rgb(215, 238, 197);
+  box-shadow: 6px 20px 10px rgb(82, 82, 82);
+}
+.txt4
+{
+  font-style: italic;
+  color: rgb(232, 236, 167);
+  font-family: cursive;
+  font-size:50px;
+  text-shadow: 4px 2px 5px rgb(12, 202, 113);
 }
