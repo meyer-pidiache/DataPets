@@ -1,23 +1,15 @@
 {% load static %}
-<div class="FC2">
-    <div class="FC2_2">
+<div class="row g-3 FC2">
+    {% for review in reviews %}
+    <div class="col-md-12 col-lg-6 FC2_2">
         <div class="FC2_1">
-            <img src="{% static 'assets/img/senor1.jpg' %}" class="per">
-            <p class="text-md-start p-2">Start aligned text on viewports sized MD (medium) or wider.</p>
-        </div>
-        <div class="FC2_1">
-            <img src="{% static 'assets/img/Senora1.jpg' %}" class="per">
-            <p class="text-md-start p-2">Start aligned text on viewports sized MD (medium) or wider.</p>
-        </div>
-    </div>
-    <div class="FC2_2">
-        <div class="FC2_1">
-            <img src="{% static 'assets/img/senor2.jpg' %}" class="per">
-            <p class="text-md-start p-2">Start aligned text on viewports sized MD (medium) or wider.</p>
-        </div>
-        <div class="FC2_1">
-            <img src="{% static 'assets/img/senora2.jpg' %}" class="per">
-            <p class="text-md-start p-2">Start aligned text on viewports sized MD (medium) or wider.</p>
+            <img src="{{ review.user.profile.profile_picture }}" class="per">
+            <p class="text-md-start p-2">
+                <b>{{ review.user }}</b>
+                <i>{{ review.pub_date }}</i>
+                {{ review.review_text }}
+            </p>
         </div>
     </div>
+    {% endfor %}
 </div>

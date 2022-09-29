@@ -5,10 +5,10 @@
                 <h2>Registrarse</h2>
                 <form action="/sign-up" method="post">
                     {% csrf_token %}
-                    <input name="username" type="text" placeholder="Usuario">
-                    <input name="email" type="text" placeholder="Correo">
-                    <input name="password1" type="password" placeholder="Contraseña">
-                    <input name="password2" type="password" placeholder="Confirma contraseña">
+                    <input name="username" type="text" placeholder="Usuario" required>
+                    <input name="email" type="text" placeholder="Correo" required>
+                    <input name="password1" type="password" placeholder="Contraseña" required>
+                    <input name="password2" type="password" placeholder="Confirma  requiredcontraseña">
                     <input type="submit" class="submit" value="REGISTRARSE">
                 </form>
             </div>
@@ -17,8 +17,8 @@
                 <div class="login-items">
                     <form action="/sign-in" method="post">
                         {% csrf_token %}
-                        <input name="username" type="text" placeholder="Usuario">
-                        <input name="password" type="password" placeholder="Contraseña">
+                        <input name="username" type="text" placeholder="Usuario" required>
+                        <input name="password" type="password" placeholder="Contraseña" required>
                         <a href="password_reset/" class="text-sm-start">¿Olvidó su contraseña?</a>
                         <div class="form-group">
                             {% for message in messages %}
