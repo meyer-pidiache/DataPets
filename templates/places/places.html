@@ -5,13 +5,50 @@
     
 
 {% block main %}
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+
+<p class="text-center mtx">Sitios que puedes visitar con tu peludito</p>
+<br>
+<br>
+
+<div class="container2">
+    <form method="post">
+        <div class="form-group">
+            <label>Lugar</label>
+            <input type="text" name="Usuario" placeholder="Nombre del Lugar"
+                class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Dirección</label>
+            <input type="text" name="Correo" placeholder="Dirección"
+                class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Horario de atención</label>
+            <input type="text" name="Correo" placeholder="Horario"
+                class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Teléfono</label>
+            <input type="number" name="Correo" placeholder="Número de Teléfono"
+                class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Fecha</label>
+            <input type="date" name="Fecha_lanzamiento"  placeholder="Fecha de visita"
+                class="form-control">
+        </div>
+ 
+        <div class="box-footer text-center">
+            <br>
+            <button class="btn btn-success">Guardar</button>
+
+        </div>
+        
+    </form>
+
+    
+
 </div>
+
 {% endblock main %}

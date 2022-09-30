@@ -3,8 +3,48 @@
 
 
 {% block main %}
-    <form action="" method="post">
-        <p>formulario</p>
-    </form>
+    
+        <p class="text-center txt4">Actualizar Datos</p> 
+
+<div class="container3">
+            <form method="post">
+                <div class="form-group">
+                    <label>Usuario</label>
+                    <input type="text" name="Usuario" placeholder="Nombre de Usuario"
+                        class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombres</label>
+                    <input type="text" name="Correo" placeholder="Nombres"
+                        class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Apellidos</label>
+                    <input type="text" name="Correo" placeholder="Apellidos"
+                        class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="number" name="Correo" placeholder="Número de Teléfono"
+                        class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" name="Contraseña" placeholder="Contraseña"
+                        class="form-control" required>
+                </div>
+        
+                <div class="box-footer text-center">
+                    <br>
+                    <button class="btn btn-success">Guardar</button>
+
+                </div>
+                
+            </form>
+
+            
+
+</div>
+
 {% endblock main %}
     
