@@ -75,7 +75,7 @@ def password_reset_request(request):
             if user_email.exists():
                 for user in user_email:
                     subject = 'Recuperación de contraseña'
-                    email_template_name = 'user/forgot_password_message.txt'
+                    email_template_name = 'user/password_reset/forgot_password_message.txt'
                     parameters = {
                         'username': user.username,
                         'email': user.email,
@@ -98,4 +98,4 @@ def password_reset_request(request):
     context = {
         'password_form': password_form,
     }
-    return render(request, 'user/password_reset.html', context)
+    return render(request, 'user/password_reset/password_reset.html', context)

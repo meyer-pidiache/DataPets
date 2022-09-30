@@ -2,125 +2,57 @@
 {% load static %}
 {% block title %}Perfil de usuario{% endblock title %}
 
-
 {% block main %}
-    <img src="{% static 'assets/img/huella1.png' %}" class="rounded mx-auto d-block" alt="" width="40" height="35">
+<img src="{% static 'assets/img/huella1.png' %}" class="rounded mx-auto d-block" alt="" width="40" height="35">
 
-    <h1 >Hola! {{ user.username }}</h1>
+<h1>¡Hola {{ user.username }}!</h1>
 
-    <section class="vh-100" style="background-color: #f4f5f7;">
-        <div class="container py-5 h-100">
-            <div class="ntxt">
-                <a href="{% url 'user:update_user' %}">Actualizar información</a>
-                <br><br>
-                <p class="lugar"><a href="{% url 'places:places' %}">Lugares Pet Friendly</a>  </p>
+<section class="vh-100" style="background-color: #f4f5f7;">
+  <div class="container py-5 h-100">
+    <div class="ntxt">
+      <a href="{% url 'user:update_user' %}">Actualizar información</a>
+      <br><br>
+      <p class="lugar"><a href="{% url 'places:places' %}">Lugares Pet Friendly</a> </p>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col col-md-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 y1 text-center text-black"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="/media/{{ user.profile.profile_picture }}" alt="Avatar" class="img-fluid my-5"
+                style="width: 80px;" />
+              <h5>{{ user.first_name }}</h5>
             </div>
-          <div class="row d-flex justify-content-center align-items-center">
-            <div class="col col-md-6 mb-4 mb-lg-0">
-              <div class="card mb-3" style="border-radius: .5rem;">
-                <div class="row g-0">
-                  <div class="col-md-4 y1 text-center text-black" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                      alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                        <h5>Paola</h5>
-                    </div>
-                  <div class="col-md-8">
-                    <div class="card-body p-4">
-                      <h6>Información</h6>
-                      <hr class="mt-0 mb-4">
-                      <div class="row pt-1">
-                        <div class="col-6 mb-3">
-                          <h6>Correo Electrónico</h6>
-                          <p class="text-muted">info@example.com</p>
-                        </div>
-                        <div class="col-6 mb-3">
-                          <h6>Teléfono</h6>
-                          <p class="text-muted">123 456 789</p>
-                        </div>
-                         <div class="col-6 mb-3">
-                          <h6>Nombre</h6>
-                          <p class="text-muted">Paola</p>
-                        </div>
-                        <div class="col-6 mb-3">
-                            <h6>Apellido</h6>
-                            <p class="text-muted">Mican</p>
-                          </div>
-                      </div>
-                    
-                     
-                    </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>Información</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Correo Electrónico</h6>
+                    <p class="text-muted">{{ user.email }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Teléfono</h6>
+                    <p class="text-muted">{{ user.profile.phone_number }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Nombre</h6>
+                    <p class="text-muted">{{ user.first_name }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Apellido</h6>
+                    <p class="text-muted">{{ user.last_name}}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-    <div class="card">
-               
-            <div class="row">
-                
-                <div class="col-2">
-                    
-                    
-                    <img src="https://i.imgur.com/xELPaag.jpg" width="70" class="rounded-circle mt-2">
-                
-                
-                </div>
-                
-                <div class="col-10">
-                    
-                    <div class="comment-box ml-2">
-                        
-                        <h4>Añade un comentario</h4>
-                        
-                        
-                        <div class="comment-area">
-                            
-                            <textarea class="form-control" placeholder="Deja aquí tu comentario..." rows="4"></textarea>
-                        
-                        </div>
-                        
-                        <div class="comment-btns mt-2">
-                            
-                            <div class="row">
-                                
-                                <div class="col-6">
-                                    
-                                    <div class="pull-left">
-                                    
-                                        <button class="btn btn-success btn-sm">Cancelar</button>      
-                                        
-                                    </div>
-                                
-                                </div>
-                                
-                                <div class="col-6 send">
-                                    
-                                    <div class="pull-right">
-                                    
-                                    <button class="btn btn-success send btn-sm">Enviar <i class="fa fa-long-arrow-right ml-1"></i></button>      
-                                        
-                                    </div>
-                                
-                                </div>
-                            
-                            </div>
-                        
-                        </div>
-                    
-                    
-                    </div>
-                
-                </div>
-            
-            
-            </div>
-  
-         
         </div>
-      </section>
-    
-         
-
+      </div>
+    </div>
+    {% include 'main/user_review.html' %}
+</section>
 
 {% endblock main %}
-    

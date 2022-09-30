@@ -11,12 +11,12 @@ def home(request):
 
 def about_1(request):
     context = {'title': '¿Qué es DataPets?'}
-    return render(request, 'main/about_1.html', context)
+    return render(request, 'main/about/about_1.html', context)
 
 def about_2(request):
     context = {'title': '¿Dónde encontrarnos?'}
-    return render(request, 'main/about_2.html', context)
+    return render(request, 'main/about/about_2.html', context)
 
 def about_3(request):
     context = {'title': 'Contáctenos'}
-    return render(request, 'main/about_3.html', context)
+    return render(request, 'main/about/about_3.html', context)

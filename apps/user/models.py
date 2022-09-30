@@ -16,9 +16,7 @@ class Profile(models.Model):
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE, null=True, blank=True)
     profile_picture = models.ImageField(upload_to='media/profiles/',
                                         default='media/profiles/default.jpg', 
-                                        null=True, blank=True, editable=True,
-                                        help_text="_Profile_Picture",
-                                        verbose_name="_Profile_Picture")
+                                        null=True, blank=True, editable=True)
     profile_picture_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="200")
     profile_picture_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="200")
 
