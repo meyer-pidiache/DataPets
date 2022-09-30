@@ -11,7 +11,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
-from .forms import ReviewForm
+from .forms import ReviewForm, UserUpdateForm, ProfileUpdateForm
 
 @login_required(login_url='/')
 def user_profile(request):
@@ -72,12 +72,34 @@ def sign_in(request):
     else:
         return render(request, 'main/index.html')
 
+@login_required(login_url='/')
 def logout_user(request):
     auth.logout(request)
     return redirect('/')
 
+@login_required(login_url='/')
 def update_user(request):
-    return render(request, 'user/update_user.html')
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,
+                                request.FILES,
+                                instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'¡Tu cuenta ha sido actualizada!')
+            return redirect('user:user')
+    
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+ 
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+
+    return render(request, 'user/update_user.html', context)
 
 def password_reset_request(request):
     if request.method == 'POST':
