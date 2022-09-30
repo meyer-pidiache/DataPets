@@ -16,20 +16,18 @@ class Profile(models.Model):
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE, null=True, blank=True)
     profile_picture = models.ImageField(upload_to='media/profiles/',
                                         default='media/profiles/default.jpg', 
-                                        null=True, blank=True, editable=True,
-                                        help_text="_Profile_Picture",
-                                        verbose_name="_Profile_Picture")
+                                        null=True, blank=True, editable=True)
     profile_picture_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="200")
     profile_picture_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="200")
 
     def __unicode__(self):
         return "{0}".format(self.profile_picture)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.profile_picture:
             return            
 
-        super(Profile, self).save()
+        super(Profile, self).save(*args, **kwargs)
         image = Image.open(self.profile_picture)
         (width, height) = image.size     
         size = ( 200, 200)

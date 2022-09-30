@@ -11,10 +11,23 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
+from .forms import ReviewForm, UserUpdateForm, ProfileUpdateForm
 
 @login_required(login_url='/')
-def user(request):
-    return render(request, 'user/user.html')
+def user_profile(request):
+    form = ReviewForm()
+    if request.method == 'POST':
+        form = ReviewForm(request.POST or None)
+        if form.is_valid():
+            review = form.save(commit = False)
+            review.user = request.user
+            review.save()
+            form = ReviewForm()
+            return redirect('main:home')
+        else:
+            messages.info(request, 'Comentario inválido')
+    context = {'form': form}
+    return render(request, 'user/user.html', context)
 
 def sign_up(request):
     if request.method == 'POST':
@@ -59,12 +72,34 @@ def sign_in(request):
     else:
         return render(request, 'main/index.html')
 
+@login_required(login_url='/')
 def logout_user(request):
     auth.logout(request)
     return redirect('/')
 
+@login_required(login_url='/')
 def update_user(request):
-    return render(request, 'user/update_user.html')
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,
+                                request.FILES,
+                                instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'¡Tu cuenta ha sido actualizada!')
+            return redirect('user:user')
+    
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+ 
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+
+    return render(request, 'user/update_user.html', context)
 
 def password_reset_request(request):
     if request.method == 'POST':
@@ -75,7 +110,7 @@ def password_reset_request(request):
             if user_email.exists():
                 for user in user_email:
                     subject = 'Recuperación de contraseña'
-                    email_template_name = 'user/forgot_password_message.txt'
+                    email_template_name = 'user/password_reset/forgot_password_message.txt'
                     parameters = {
                         'username': user.username,
                         'email': user.email,
@@ -98,4 +133,4 @@ def password_reset_request(request):
     context = {
         'password_form': password_form,
     }
-    return render(request, 'user/password_reset.html', context)
+    return render(request, 'user/password_reset/password_reset.html', context)
