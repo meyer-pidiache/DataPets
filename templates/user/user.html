@@ -33,18 +33,24 @@
                     <h6>Correo Electrónico</h6>
                     <p class="text-muted">{{ user.email }}</p>
                   </div>
+                  {% if user.profile.phone_number %}
                   <div class="col-6 mb-3">
                     <h6>Teléfono</h6>
                     <p class="text-muted">{{ user.profile.phone_number }}</p>
                   </div>
+                  {% endif %}
+                  {% if user.first_name %}
                   <div class="col-6 mb-3">
                     <h6>Nombre</h6>
                     <p class="text-muted">{{ user.first_name }}</p>
                   </div>
+                  {% endif %}
+                  {% if user.last_name %}
                   <div class="col-6 mb-3">
                     <h6>Apellido</h6>
-                    <p class="text-muted">{{ user.last_name}}</p>
+                    <p class="text-muted">{{ user.last_name }}</p>
                   </div>
+                  {% endif %}
                 </div>
               </div>
             </div>
@@ -52,7 +58,14 @@
         </div>
       </div>
     </div>
-    {% include 'main/user_review.html' %}
+    
+    {% if user.profile.phone_number %}
+      {% include 'main/user_review.html' %}
+      {% else %}
+      <h3>Actualiza tus datos para poder dejar una reseña</h3>
+    {% endif %}
+
+      
 </section>
 
 {% endblock main %}

@@ -11,10 +11,23 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
+from .forms import ReviewForm
 
 @login_required(login_url='/')
-def user(request):
-    return render(request, 'user/user.html')
+def user_profile(request):
+    form = ReviewForm()
+    if request.method == 'POST':
+        form = ReviewForm(request.POST or None)
+        if form.is_valid():
+            review = form.save(commit = False)
+            review.user = request.user
+            review.save()
+            form = ReviewForm()
+            return redirect('main:home')
+        else:
+            messages.info(request, 'Comentario inválido')
+    context = {'form': form}
+    return render(request, 'user/user.html', context)
 
 def sign_up(request):
     if request.method == 'POST':

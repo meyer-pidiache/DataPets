@@ -23,11 +23,11 @@ class Profile(models.Model):
     def __unicode__(self):
         return "{0}".format(self.profile_picture)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.profile_picture:
             return            
 
-        super(Profile, self).save()
+        super(Profile, self).save(*args, **kwargs)
         image = Image.open(self.profile_picture)
         (width, height) = image.size     
         size = ( 200, 200)
