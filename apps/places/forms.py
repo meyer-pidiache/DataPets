@@ -12,7 +12,7 @@ class PlaceForm(forms.ModelForm):
                 widget=forms.FileInput(attrs={
                         'class':'form-control'})
     )
-    place_name = forms.CharField(max_length=20, required=True,
+    place_name = forms.CharField(max_length=50, required=True,
                 widget=forms.TextInput(attrs={
                         'placeholder': 'Nombre del lugar',
                         'class':'form-control'})

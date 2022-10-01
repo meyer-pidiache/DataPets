@@ -6,11 +6,13 @@ from .forms import PlaceForm
 def places(request):
     form = PlaceForm()
     if request.method == 'POST':
-        form = PlaceForm(request.POST,
-                        request.FILES)
+        form = PlaceForm(request.POST or None,
+                        request.FILES or None)
         if form.is_valid():
-            form.user = request.user
-            form.save()
+            place = form.save(commit = False)
+            place.user = request.user
+            place.save()
+            form = PlaceForm()
             messages.success(request, f'¡Tu lugar ha sido agregado!')
             return redirect('places:places')
         else:
