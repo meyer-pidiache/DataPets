@@ -31,8 +31,10 @@
   
   {% if user.profile.is_editor or user.is_staff %}
     {% include 'places/form.html' %}
-  {% else %}
-    <h4>Verifica tu correo para poder agregar un lugar</h4>
+  {% elif user.id %}
+    <h4 style="text-align: center;">Verifica tu correo para poder agregar un lugar</h4>
+    {% else %}
+    <h4 style="text-align: center;">Regístrate o inicia sesión <a href="/">aquí</a> para tener acceso a todos los lugares</h4>
   {% endif %}
 
 </div>

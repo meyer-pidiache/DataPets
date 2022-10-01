@@ -62,7 +62,9 @@
             <button type="button" class="btn btn-success">
               <a href="{% url 'places:edit' place.id %}" style="text-decoration:none; color:white;">Editar</a> 
             </button>
-            <button type="button" class="btn btn-danger">Eliminar</button>
+            <button type="button" class="btn btn-danger">
+              <a href="{% url 'places:delete' place.id %}" style="text-decoration:none; color:white;">Eliminar</a> 
+            </button>
           </div>
       {% endif %}
     </div>

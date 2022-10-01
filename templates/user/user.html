@@ -59,10 +59,14 @@
       </div>
     </div>
     
-    {% if user.profile.is_editor %}
-      {% include 'main/user_review.html' %}
+    {% if user.profile.is_editor or user.is_staff %}
+      {% if user.profile.has_many_comments %}
+        <br><h3 style="text-align: center;">Gracias por tus comentarios</h3>
       {% else %}
-      <h3>Verifica tu correo para poder dejar una reseña</h3>
+        {% include 'main/user_review.html' %}
+      {% endif %}
+    {% else %}
+      <h3 style="text-align: center;">Verifica tu correo para poder dejar una reseña</h3>
     {% endif %}
 </section>
 

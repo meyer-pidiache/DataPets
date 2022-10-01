@@ -23,9 +23,11 @@ def user_profile(request):
             review.user = request.user
             review.save()
             form = ReviewForm()
+            messages.success(request, '¡Tu reseña ha sido agregada!')
             return redirect('main:home')
         else:
-            messages.info(request, 'Comentario inválido')
+            messages.error(request, 'Comentario inválido')
+            return redirect('main:home')
     context = {'form': form}
     return render(request, 'user/user.html', context)
 
@@ -38,14 +40,14 @@ def sign_up(request):
         if password1 == password2:
             password = password1
         else:
-            messages.info(request, 'Las contraseñas no coinciden')
+            messages.warning(request, 'Las contraseñas no coinciden')
             return redirect('/#login_section')
 
         if User.objects.filter(username=username).exists():
-            messages.info(request, 'Nombre de usuario ya está en uso')
+            messages.warning(request, 'Nombre de usuario ya está en uso')
             return redirect('/#login_section')
         elif User.objects.filter(email=email).exists():
-            messages.info(request, 'Correo ya está en uso')
+            messages.warning(request, 'Correo ya está en uso')
             return redirect('/#login_section')
         else:
             user = User.objects.create_user(username=username, password=password, email=email)
@@ -83,7 +85,7 @@ def sign_in(request):
             auth.login(request, user)
             return redirect('user:user')
         else:
-            messages.info(request, 'Nombre de usuario o contraseña inválido')
+            messages.error(request, 'Nombre de usuario o contraseña inválido')
             return redirect('/#login_section')
     else:
         return render(request, 'main/index.html')
@@ -160,6 +162,7 @@ def activate(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.profile.is_editor = True
         user.save()
+        messages.success(request, '¡Tu correo ha sido verificado!')
         return redirect('main:home')
     else:
         return HttpResponse('¡Link de activación inválido!')
