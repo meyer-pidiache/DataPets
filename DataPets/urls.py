@@ -7,7 +7,7 @@ from django.views.static import serve
 
 urlpatterns = [
     path('', include('apps.main.urls')),
-    path('', include('apps.places.urls')),
+    path('places/', include('apps.places.urls')),
     path('', include('apps.user.urls')),
     path('password_reset_complete/', auth_view.PasswordResetCompleteView.as_view(template_name='user/password_reset/password_reset_complete.html'), name='password_reset_complete'),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),

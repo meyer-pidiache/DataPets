@@ -13,6 +13,12 @@
         {% include 'partials/nav.html' %}
     </header>
 
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+
     <main>
         {% block main %}
 
