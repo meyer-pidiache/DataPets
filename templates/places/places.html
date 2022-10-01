@@ -30,7 +30,7 @@
   <br>
   
   {% if user.profile.is_editor or user.is_staff %}
-    {% include 'places/place_form.html' %}
+    {% include 'places/form.html' %}
   {% else %}
     <h4>Verifica tu correo para poder agregar un lugar</h4>
   {% endif %}
