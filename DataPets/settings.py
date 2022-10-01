@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'DataPets.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-""" DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': dec('NAME'),
@@ -98,14 +98,8 @@ WSGI_APPLICATION = 'DataPets.wsgi.application'
 
 if "DATABASE_URL" in os.environ:
     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    DATABASES['default'].update(db_from_env) """
+    DATABASES['default'].update(db_from_env)
 
-DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-  }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
