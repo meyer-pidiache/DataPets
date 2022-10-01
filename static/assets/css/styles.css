@@ -26,15 +26,7 @@
   box-sizing: border-box;
 }
 
-.FC2 {
-  width: 100%;
-  display: flex;
-  padding: 10px;
-  position: relative;
-  top: auto;
-  background-color: black;
-  flex: 1 1 auto;
-}
+
 
 h1 {
   position: relative;
@@ -46,12 +38,14 @@ h1 {
   flex: 1 1 auto;
   width: 50%;
   padding: 1%;
+  background-color: #b7f0f3;
 }
 
 .FC2_2 {
-  display: block;
-  flex: 1 1 auto;
+  display:flex;
+  flex:50%;
   width: 50%;
+ margin-block-end:10px ;
 }
 
 .text-center {

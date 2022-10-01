@@ -9,14 +9,17 @@
 
 <section class="vh-100" style="background-color: #f4f5f7;">
   <div class="container py-5 h-100">
-    <div class="ntxt">
-      <a href="{% url 'user:update_user' %}">Actualizar información</a>
-      <br><br>
-      <p class="lugar"><a href="{% url 'places:places' %}">Lugares Pet Friendly</a> </p>
+    <div class="ntxt" style="display: flex;">
+      <div style="flex: 50%;">
+        <a href="{% url 'user:update_user' %} " class="btn btn-info"  role="button" style="color: #f4f5f7; background-color: darkorchid;">Actualizar información</a>
+      </div>
+      <div style="flex: 50%; ">
+        <a href="{% url 'places:places' %}"class="btn btn-info" role="button" style="color: #f4f5f7; background-color: darkorchid; float: right; " >Lugares Pet Friendly</a> </p>
+      </div>
     </div>
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col col-md-6 mb-4 mb-lg-0">
-        <div class="card mb-3" style="border-radius: .5rem;">
+        <div class="card mb-3" style="border-radius: .5rem;"> 
           <div class="row g-0">
             <div class="col-md-4 y1 text-center text-black"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
