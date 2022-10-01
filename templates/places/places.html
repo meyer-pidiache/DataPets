@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% block title %}Lugares{% endblock title %}
-{% block link %}{% static 'assets/css/places.css' %}{% endblock link %}
 {% block main %}
 
 <p class="text-center mtx">Sitios que puedes visitar con tu peludito</p>
@@ -16,12 +15,11 @@
         <img src="/media/{{ place.photo }}" class="card-img-top" alt="...">
         <div class="card-body" style="background-color:rgb(232, 226, 234);">
           <h5 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">{{ place.name }}</h5>
-          <p class="card-text0" style="font-family:cursive; font-size: medium;">Comentario</p>
           <p class="card-text1" style="font-family:cursive; font-size: medium;">Dirección: {{ place.direction }}</p>
           <p class="card-text2" style="font-family:cursive; font-size: medium;">Teléfono: {{ place.phone_number }}</p>
           <p class="card-text2" style="font-family:cursive; font-size: medium;">Horario de Atención: {{ place.opening_hours }}</p>
-          <a href="https://www.google.com/maps/place/El+bosque+Centro+Deportivo+Canino/@4.7692736,-74.0250136,15z/data=!4m2!3m1!1s0x0:0xb86c95191afafbf2?sa=X&ved=2ahUKEwjK5u34x736AhUMQjABHfWCC_UQ_BJ6BAhUEAU"
-            class="btn btn-warning">Ubicación</a>
+          <a href="{% url 'places:detail' place.id %}"
+            class="btn btn-warning">Más información</a>
         </div>
       </div>
     </div>

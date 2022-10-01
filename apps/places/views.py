@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
 from .models import Place
@@ -23,3 +23,8 @@ def places(request):
     context = {'form': form,
                'places': places}
     return render(request, 'places/places.html', context)
+
+def detail(request, place_id):
+    place = get_object_or_404(Place, id=place_id)
+    context = {'place': place}
+    return render(request, 'places/detail.html', context)
