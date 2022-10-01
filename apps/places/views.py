@@ -21,10 +21,32 @@ def places(request):
             messages.info(request, 'Información inválida')
 
     context = {'form': form,
-               'places': places}
+               'places': places,
+               'edit': False}
     return render(request, 'places/places.html', context)
 
 def detail(request, place_id):
     place = get_object_or_404(Place, id=place_id)
     context = {'place': place}
     return render(request, 'places/detail.html', context)
+
+def edit(request, place_id):
+    place = get_object_or_404(Place, id=place_id)
+    form = PlaceForm(request.POST or None, request.FILES or None, instance=place)
+    if request.method == 'POST':
+        form = PlaceForm(request.POST or None,
+                        request.FILES or None,
+                        instance=place)
+        if form.is_valid():
+            form.save()
+            form = PlaceForm()
+            messages.success(request, f'¡Tu lugar ha sido actualizado!')
+            return detail(request, place_id)
+        else:
+            messages.info(request, 'Información inválida')
+
+    context = {'form': form,
+               'place': place,
+               'edit': True}
+
+    return render(request, 'places/edit.html', context)

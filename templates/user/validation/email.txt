@@ -1,0 +1,14 @@
+{% autoescape off %}
+¡Bienvenido a DataPets {{ username }}!
+
+Para tener acceso a todas las funcionalidades de nuestro sitio web, confirma tu correo con el siguiente enlace:
+
+{{ protocol }}://{{ domain }}{% url 'user:activate' uidb64=uid token=token %}
+
+Este link sólo se puede utilizar una vez.
+
+Cordialmente,
+
+El equipo de DataPets
+
+{% endautoescape %}

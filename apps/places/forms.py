@@ -9,6 +9,7 @@ class PlaceForm(forms.ModelForm):
                         'class':'form-control'})
     )
     photo = forms.ImageField(
+                required=False,
                 widget=forms.FileInput(attrs={
                         'class':'form-control'})
     )

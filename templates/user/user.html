@@ -59,13 +59,11 @@
       </div>
     </div>
     
-    {% if user.profile.phone_number %}
+    {% if user.profile.is_editor %}
       {% include 'main/user_review.html' %}
       {% else %}
-      <h3>Actualiza tus datos para poder dejar una reseña</h3>
+      <h3>Verifica tu correo para poder dejar una reseña</h3>
     {% endif %}
-
-      
 </section>
 
 {% endblock main %}

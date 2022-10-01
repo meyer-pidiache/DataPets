@@ -18,6 +18,7 @@ class Place(models.Model):
                                         default='media/places/logo/default.jpg', 
                                         null=True, blank=True, editable=True)
     photo = models.ImageField(upload_to='media/places/photo',
+                                        default='media/places/photo/default.jpg', 
                                         null=True, blank=True, editable=True)
 
     logo_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="40")

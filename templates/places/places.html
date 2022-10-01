@@ -29,47 +29,11 @@
   <br>
   <br>
   
-  {% if user.profile.phone_number %}
-  <div class="container2">
-    <form method="post" enctype='multipart/form-data'>
-      {% csrf_token %}
-      <div class="form-group">
-        <label>Logo</label>
-        {{ form.logo}}
-      </div>
-      <div class="form-group">
-        <label>Foto</label>
-        {{ form.photo}}
-      </div>
-      <div class="form-group">
-        <label>Lugar</label>
-        {{ form.name}}
-      </div>
-      <div class="form-group">
-        <label>Dirección</label>
-        {{ form.direction}}
-      </div>
-      <div class="form-group">
-        <label>Teléfono</label>
-        {{ form.phone_number}}
-      </div>
-      <div class="form-group">
-        <label>Horario de atención</label>
-        {{ form.opening_hours}}
-      </div>
-      <div class="form-group">
-        <label>Fecha de visita</label>
-        <div class="form-group"></div>
-        {{ form.visit_date}}
-      </div>
-      <div class="box-footer text-center">
-        <br>
-        <button class="btn btn-success">Guardar</button>
-      </div>
-    </form>
-  </div>
+  {% if user.profile.is_editor or user.is_staff %}
+    {% include 'places/place_form.html' %}
   {% else %}
-  <h4>Actualiza tu información para poder agregar un lugar</h4>
+    <h4>Verifica tu correo para poder agregar un lugar</h4>
   {% endif %}
 
+</div>
   {% endblock main %}

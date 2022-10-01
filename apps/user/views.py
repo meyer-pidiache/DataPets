@@ -8,8 +8,8 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
 from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from .forms import ReviewForm, UserUpdateForm, ProfileUpdateForm
 
@@ -52,6 +52,22 @@ def sign_up(request):
             user.save()
             user = auth.authenticate(username=username, password=password)
             auth.login(request, user)
+            subject = 'Confirmación de correo electrónico'
+            email_template_name = 'user/validation/email.txt'
+            parameters = {
+                'username': username,
+                'email': email,
+                'domain': 'datapets.herokuapp.com',
+                'site_name': 'DataPets',
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': default_token_generator.make_token(user),
+                'protocol': 'https',
+            }
+            email_body = render_to_string(email_template_name, parameters)
+            try:
+                send_mail(subject, email_body, '', [email], fail_silently=False)
+            except:
+                return HttpResponse('Header inválido')
             return redirect('user:user')
     else:
         return render(request, 'main/index.html')
@@ -134,3 +150,16 @@ def password_reset_request(request):
         'password_form': password_form,
     }
     return render(request, 'user/password_reset/password_reset.html', context)
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        user.profile.is_editor = True
+        user.save()
+        return redirect('main:home')
+    else:
+        return HttpResponse('¡Link de activación inválido!')
