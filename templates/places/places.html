@@ -8,84 +8,61 @@
 <br>
 <br>
 <div class="container7">
+
   <div class="row row-cols-1 row-cols-md-3 g-4" style="align-content: center;">
+    {% for place in places %}
     <div class="col">
       <div class="card h-100">
-        <img src="/static/assets/img/parque1.jpg" class="card-img-top" alt="...">
+        <img src="/media/{{ place.photo }}" class="card-img-top" alt="...">
         <div class="card-body" style="background-color:rgb(232, 226, 234);">
-          <h5 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">Parque El bosque</h5>
+          <h5 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">{{ place.name }}</h5>
           <p class="card-text0" style="font-family:cursive; font-size: medium;">Comentario</p>
-          <p class="card-text1" style="font-family:cursive; font-size: medium;">Dirección: </p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;">Teléfono: </p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;">Horario de Atención: </p>
+          <p class="card-text1" style="font-family:cursive; font-size: medium;">Dirección: {{ place.direction }}</p>
+          <p class="card-text2" style="font-family:cursive; font-size: medium;">Teléfono: {{ place.phone_number }}</p>
+          <p class="card-text2" style="font-family:cursive; font-size: medium;">Horario de Atención: {{ place.opening_hours }}</p>
           <a href="https://www.google.com/maps/place/El+bosque+Centro+Deportivo+Canino/@4.7692736,-74.0250136,15z/data=!4m2!3m1!1s0x0:0xb86c95191afafbf2?sa=X&ved=2ahUKEwjK5u34x736AhUMQjABHfWCC_UQ_BJ6BAhUEAU"
             class="btn btn-warning">Ubicación</a>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="/static/assets/img/centro1.jpg" class="card-img-top" alt="...">
-        <div class="card-body" style="background-color:rgb(232, 226, 234);">
-          <h5 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">Centro Comercial Eden</h5>
-          <p class="card-text0" style="font-family:cursive; font-size: medium;"> Comentario</p>
-          <p class="card-text1" style="font-family:cursive; font-size: medium;">Dirección: </p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;">Teléfono: </p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;">Horario de Atención: </p>
-          <a href="https://www.google.com/maps/place/Centro+Comercial+El+Edén/@4.6465957,-74.1289606,15z/data=!4m2!3m1!1s0x0:0x14aa4d9d70fb5f52?sa=X&ved=2ahUKEwiVs_yZyL36AhWERDABHb_tBKsQ_BJ6BAh-EAU"
-            class="btn btn-warning">Ubicación</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="/static/assets/img/restaurant.jpg" class="card-img-top" alt="...">
-        <div class="card-body" style="background-color:rgb(232, 226, 234);">
-          <h5 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">Restaurante Patronno</h5>
-          <p class="card-text0" style="font-family:cursive; font-size: medium;"> Comentario</p>
-          <p class="card-text1" style="font-family:cursive; font-size: medium;">Dirección: </p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;">Teléfono: </p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;">Horario de Atención: </p>
-          <a href="https://www.google.com/maps/place/Patrono+Food+Hall/@4.6779837,-74.0498759,15z/data=!4m2!3m1!1s0x0:0x20f0885c825597fe?sa=X&ved=2ahUKEwiH6bvmyL36AhWiSDABHcylAn0Q_BJ6BAhlEAU"
-            class="btn btn-warning">Ubicación</a>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
+
   <br>
   <br>
+  
   {% if user.profile.phone_number %}
   <div class="container2">
     <form method="post" enctype='multipart/form-data'>
       {% csrf_token %}
       <div class="form-group">
         <label>Logo</label>
-        {{ form.place_logo}}
+        {{ form.logo}}
       </div>
       <div class="form-group">
         <label>Foto</label>
-        {{ form.place_photo}}
+        {{ form.photo}}
       </div>
       <div class="form-group">
         <label>Lugar</label>
-        {{ form.place_name}}
+        {{ form.name}}
       </div>
       <div class="form-group">
         <label>Dirección</label>
-        {{ form.place_direction}}
+        {{ form.direction}}
       </div>
       <div class="form-group">
         <label>Teléfono</label>
-        {{ form.place_phone_number}}
+        {{ form.phone_number}}
       </div>
       <div class="form-group">
         <label>Horario de atención</label>
-        {{ form.place_opening_hours}}
+        {{ form.opening_hours}}
       </div>
       <div class="form-group">
         <label>Fecha de visita</label>
         <div class="form-group"></div>
-        {{ form.place_visit_date}}
+        {{ form.visit_date}}
       </div>
       <div class="box-footer text-center">
         <br>
