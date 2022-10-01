@@ -2,8 +2,6 @@
 {% load static %}
 {% block title %}Lugares{% endblock title %}
 {% block link %}{% static 'assets/css/places.css' %}{% endblock link %}
-    
-
 {% block main %}
 
 <p class="text-center mtx">Sitios que puedes visitar con tu peludito</p>
@@ -63,38 +61,34 @@
   <br>
   <br>
 <div class="container2">
-    <form method="post">
+    <form method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Logo</label>
+            {{ form.place_logo}}
+        </div>
+        <div class="form-group">
+            <label>Foto</label>
+            {{ form.place_photo}}
+        </div>
         <div class="form-group">
             <label>Lugar</label>
-            <input type="text" name="Usuario" placeholder="Nombre del Lugar"
-                class="form-control" required>
+            {{ form.place_name}}
         </div>
         <div class="form-group">
             <label>Dirección</label>
-            <input type="text" name="Correo" placeholder="Dirección"
-                class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Horario de atención</label>
-            <input type="text" name="Correo" placeholder="Horario"
-                class="form-control" required>
+            {{ form.place_direction}}
         </div>
         <div class="form-group">
             <label>Teléfono</label>
-            <input type="number" name="Correo" placeholder="Número de Teléfono"
-                class="form-control" required>
+            {{ form.place_phone_number}}
         </div>
  
         <div class="box-footer text-center">
             <br>
             <button class="btn btn-success">Guardar</button>
-
         </div>
-        
     </form>
-
-    
-
 </div>
 
 {% endblock main %}

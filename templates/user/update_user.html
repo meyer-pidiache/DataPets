@@ -1,60 +1,53 @@
 {% extends 'layout.html' %}
 {% block title %}Actualizar información{% endblock title %}
 
-
 {% block main %}
-    
-        <p class="text-center txt4">Actualizar Datos</p> 
 
+<p class="text-center txt4">Actualizar Datos</p>
 <div class="container3">
-            <form method="post">
-                <div class="form-group">
-                    <label>Usuario</label>
-                    <input type="text" name="Usuario" placeholder="Nombre de Usuario"
-                        class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Nombres</label>
-                    <input type="text" name="Correo" placeholder="Nombres"
-                        class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Apellidos</label>
-                    <input type="text" name="Correo" placeholder="Apellidos"
-                        class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Teléfono</label>
-                    <input type="number" name="Correo" placeholder="Número de Teléfono"
-                        class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Contraseña</label>
-                    <input type="password" name="Contraseña" placeholder="Contraseña"
-                        class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Confirmar Contraseña</label>
-                    <input type="password" name="Contraseña" placeholder=""
-                        class="form-control" required>
-                </div>
-                <br>
-                <div class="input-group mb-3">
-                    <input type="file" class="form-control" id="inputGroupFile02">
-                    <label class="input-group-text" for="inputGroupFile02">Subir</label>
-                </div>
-        
-                <div class="box-footer text-center">
-                    <br>
-                    <button class="btn btn-success">Guardar</button>
+    <img src="media/{{ user.profile.profile_picture }}" alt="">
+    <form method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Cambiar foto de perfil</label>
+            {{ p_form.profile_picture}}
+        </div>
+        <div class="form-group">
+            <label>Usuario</label>
+            {{ u_form.username}}
+        </div>
+        <div class="form-group">
+            <label>Nombres</label>
+            {{ u_form.first_name}}
+        </div>
+        <div class="form-group">
+            <label>Apellidos</label>
+            {{ u_form.last_name}}
+        </div>
+        <div class="form-group">
+            <label>Género</label>
+            <div class="form-control">
+                {{ p_form.gender}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Teléfono</label>
+            {{ p_form.phone_number}}
+        </div>
+        <div class="form-group">
+            <label>Contraseña</label>
+            {{ u_form.password1}}
+        </div>
+        <div class="form-group">
+            <label>Confirmar Contraseña</label>
+            {{ u_form.password2}}
+        </div>
 
-                </div>
-                
-            </form>
-
-            
-
+        <div class="box-footer text-center">
+            <br>
+            <button class="btn btn-success">Guardar</button>
+        </div>
+    </form>
 </div>
 
 {% endblock main %}
-    
