@@ -62,15 +62,18 @@
       </div>
     </div>
     
-    {% if user.profile.is_editor or user.is_staff %}
-      {% if user.profile.has_many_comments %}
-        <br><h3 style="text-align: center;">Gracias por tus comentarios</h3>
-      {% else %}
-        {% include 'main/user_review.html' %}
-      {% endif %}
+    {% if user.is_staff %}
+      <br>{% include 'main/user_review.html' %}
+    {% elif not user.profile.is_editor %}
+      <br><h3 style="text-align: center;">Verifica tu correo y actualiza tus datos para poder dejar una reseña</h3>
+    {% elif not user.first_name %}
+      <br><h3 style="text-align: center;">Actualiza tus datos para poder dejar una reseña</h3>
+    {% elif user.profile.has_many_comments %}
+      <br><h3 style="text-align: center;">Gracias por tus comentarios</h3>
     {% else %}
-      <h3 style="text-align: center;">Verifica tu correo para poder dejar una reseña</h3>
+      <br>{% include 'main/user_review.html' %}
     {% endif %}
+
 </section>
 
 {% endblock main %}
