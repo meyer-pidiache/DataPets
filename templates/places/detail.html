@@ -21,7 +21,7 @@
       <p class="card-text2" style="font-family:cursive; font-size: medium;">Fecha de visita:
         {{ place.visit_date }}
       </p>
-      <div id="map-container-google-1" class="z-depth-1-half map-container mt-4" style="height: 500px; margin: 0 auto;">
+      <div id="map-container-google-1" class="z-depth-1-half map-container mt-4 mx-5">
         <iframe src="https://maps.google.com/maps?q={{ place.direction }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
           frameborder="0" style="border:0 " allowfullscreen></iframe>
       </div>
@@ -57,19 +57,18 @@
         </div>
       </div>
       {% if place.user == user or user.is_staff %}
-          <br>
-          <div class="text-center">
-            <button type="button" class="btn btn-success">
-              <a href="{% url 'places:edit' place.id %}" style="text-decoration:none; color:white;">Editar</a> 
-            </button>
-            <button type="button" class="btn btn-danger">
-              <a href="{% url 'places:delete' place.id %}" style="text-decoration:none; color:white;">Eliminar</a> 
-            </button>
-          </div>
+      <br>
+      <div class="text-center">
+        <button type="button" class="btn btn-success">
+          <a href="{% url 'places:edit' place.id %}" style="text-decoration:none; color:white;">Editar</a>
+        </button>
+        <button type="button" class="btn btn-danger">
+          <a href="{% url 'places:delete' place.id %}" style="text-decoration:none; color:white;">Eliminar</a>
+        </button>
+      </div>
       {% endif %}
     </div>
   </div>
 </div>
 
-  
 {% endblock main %}
