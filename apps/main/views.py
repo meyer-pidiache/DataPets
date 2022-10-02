@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Review
 
 def home(request):
@@ -14,9 +15,10 @@ def about_1(request):
     return render(request, 'main/about/about_1.html', context)
 
 def about_2(request):
+    if request.method == 'POST':
+        user = request.POST['user_name']
+        messages.success(request, f'¡{user}, tu comentario ha sido guardado!')
+        return redirect('main:home')
+
     context = {'title': '¿Dónde encontrarnos?'}
     return render(request, 'main/about/about_2.html', context)
-
-def about_3(request):
-    context = {'title': 'Contáctenos'}
-    return render(request, 'main/about/about_3.html', context)

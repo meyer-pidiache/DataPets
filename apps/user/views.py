@@ -93,6 +93,7 @@ def sign_in(request):
 @login_required(login_url='/')
 def logout_user(request):
     auth.logout(request)
+    messages.success(request, 'Has cerrado sesión')
     return redirect('/')
 
 @login_required(login_url='/')
@@ -105,7 +106,7 @@ def update_user(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, f'¡Tu cuenta ha sido actualizada!')
+            messages.success(request, '¡Tu cuenta ha sido actualizada!')
             return redirect('user:user')
     
     else:
