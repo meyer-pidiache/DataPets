@@ -108,7 +108,10 @@ def update_user(request):
             p_form.save()
             messages.success(request, '¡Tu cuenta ha sido actualizada!')
             return redirect('user:user')
-    
+        else:
+            messages.success(request, 'Datos inválidos')
+            return redirect('user:update_user')
+
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
