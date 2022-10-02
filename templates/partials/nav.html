@@ -29,7 +29,9 @@
         
       </ul>
       <li class="nav-itemv" style="display:flex;" >
-        <a class="nav-link disabled" style="position: relative; top: 5px; left: -5px;" >¡Hola {{ user.username }}!</a> 
+        <a class="nav-link" href="{% url 'user:user' %}" style="position: relative; top: 5px; left: -5px;" >
+          ¡Hola {{ user.username }}!
+        </a> 
         <a  type="button" class="btn btn-success">Cerrar Sesión</a>
       </li>
       
