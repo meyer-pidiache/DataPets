@@ -8,8 +8,8 @@ from django.contrib.auth.forms import PasswordResetForm
 from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
 from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from .forms import ReviewForm, UserUpdateForm, ProfileUpdateForm
 
@@ -23,9 +23,11 @@ def user_profile(request):
             review.user = request.user
             review.save()
             form = ReviewForm()
+            messages.success(request, '¡Tu reseña ha sido agregada!')
             return redirect('main:home')
         else:
-            messages.info(request, 'Comentario inválido')
+            messages.error(request, 'Comentario inválido')
+            return redirect('main:home')
     context = {'form': form}
     return render(request, 'user/user.html', context)
 
@@ -38,20 +40,36 @@ def sign_up(request):
         if password1 == password2:
             password = password1
         else:
-            messages.info(request, 'Las contraseñas no coinciden')
+            messages.warning(request, 'Las contraseñas no coinciden')
             return redirect('/#login_section')
 
         if User.objects.filter(username=username).exists():
-            messages.info(request, 'Nombre de usuario ya está en uso')
+            messages.warning(request, 'Nombre de usuario ya está en uso')
             return redirect('/#login_section')
         elif User.objects.filter(email=email).exists():
-            messages.info(request, 'Correo ya está en uso')
+            messages.warning(request, 'Correo ya está en uso')
             return redirect('/#login_section')
         else:
             user = User.objects.create_user(username=username, password=password, email=email)
             user.save()
             user = auth.authenticate(username=username, password=password)
             auth.login(request, user)
+            subject = 'Confirmación de correo electrónico'
+            email_template_name = 'user/validation/email.txt'
+            parameters = {
+                'username': username,
+                'email': email,
+                'domain': 'datapets.herokuapp.com',
+                'site_name': 'DataPets',
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': default_token_generator.make_token(user),
+                'protocol': 'https',
+            }
+            email_body = render_to_string(email_template_name, parameters)
+            try:
+                send_mail(subject, email_body, '', [email], fail_silently=False)
+            except:
+                return HttpResponse('Header inválido')
             return redirect('user:user')
     else:
         return render(request, 'main/index.html')
@@ -67,7 +85,7 @@ def sign_in(request):
             auth.login(request, user)
             return redirect('user:user')
         else:
-            messages.info(request, 'Nombre de usuario o contraseña inválido')
+            messages.error(request, 'Nombre de usuario o contraseña inválido')
             return redirect('/#login_section')
     else:
         return render(request, 'main/index.html')
@@ -134,3 +152,17 @@ def password_reset_request(request):
         'password_form': password_form,
     }
     return render(request, 'user/password_reset/password_reset.html', context)
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        user.profile.is_editor = True
+        user.save()
+        messages.success(request, '¡Tu correo ha sido verificado!')
+        return redirect('main:home')
+    else:
+        return HttpResponse('¡Link de activación inválido!')

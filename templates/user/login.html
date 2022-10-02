@@ -20,13 +20,6 @@
                         <input name="username" type="text" placeholder="Usuario" required>
                         <input name="password" type="password" placeholder="Contraseña" required>
                         <a href="password_reset/" class="text-sm-start">¿Olvidó su contraseña?</a>
-                        <div class="form-group">
-                            {% for message in messages %}
-                            <div style="color: red;">
-                                {{message}}
-                            </div>
-                            {% endfor %}
-                        </div>
                         <button class="fb"><i class="fab fa-facebook-f"></i>Acceder</button>
                     </form>
                 </div>
