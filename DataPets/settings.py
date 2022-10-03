@@ -89,7 +89,6 @@ WSGI_APPLICATION = 'DataPets.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ATOMIC_REQUESTS': True,
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': dec('NAME'),
         'USER': dec('USER'),
@@ -158,7 +157,7 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': dec('API_SECRET'),
 }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

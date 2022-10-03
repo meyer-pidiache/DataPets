@@ -1,9 +1,14 @@
+{% load static %}
 <form method="post">
     {% csrf_token %}
     <div class="card w-100">
         <div class="row">
             <div class="col-2">
-                <img src="/media/{{ user.profile.profile_picture }}" width="70" class="rounded-circle mt-2">
+                {% if user.profile.profile_picture.url %}
+                    <img src="{{ user.profile.profile_picture.url }}" alt="Avatar" width="70" class="rounded-circle mt-2"/>
+                {% else %}
+                    <img src="{% static 'assets/img/default.jpg' %}" alt="Avatar" width="70" class="rounded-circle mt-2"/>
+                {% endif %}
             </div>
             <div class="col-10">
                 <div class="comment-box ml-2">

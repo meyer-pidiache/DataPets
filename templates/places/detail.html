@@ -3,10 +3,18 @@
 {% block main %}
 <div class="col">
   <div class="card h-100 w-100">
-    <img src="/media/{{ place.photo }}" class="card-img-top" alt="{{ place.name }}">
+    {% if place.photo.url %}
+      <img src="{{ place.photo.url }}" class="card-img-top" alt="{{ place.name }}">
+    {% else %}
+      <img src="{% static 'assets/img/perro1.jpeg' %}" class="card-img-top" alt="{{ place.name }}">
+    {% endif %}
     <div class="card-body" style="background-color:rgb(232, 226, 234);">
       <h1 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">
-        <img src="/media/{{ place.logo }}" width="70" class="rounded-circle mt-2">
+        {% if place.logo.url %}
+          <img src="{{ place.logo.url }}" width="70" class="rounded-circle mt-2">
+        {% else %}
+          <img src="{% static 'assets/img/huella1.jpeg' %}" width="70" class="rounded-circle mt-2">
+        {% endif %}
         {{ place.name }}
       </h1>
       <p class="card-text1" style="font-family:cursive; font-size: medium;">Dirección:
@@ -34,8 +42,13 @@
             <div class="row g-0">
               <div class="col-md-4 y1 text-center text-black"
                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                <img src="/media/{{ place.user.profile.profile_picture }}" alt="Avatar" class="img-fluid my-5"
-                  style="width: 80px;" />
+                {% if place.user.profile.profile_picture.url %}
+                  <img src="{{ place.user.profile.profile_picture.url }}" alt="Avatar" class="img-fluid my-5"
+                    style="width: 80px;" />
+                {% else %}
+                  <img src="{% static 'assets/img/default.jpg' %}" alt="Avatar" class="img-fluid my-5"
+                    style="width: 80px;" />
+                {% endif %}
                 <h5>{{ place.user.username }}</h5>
               </div>
               <div class="col-md-8">

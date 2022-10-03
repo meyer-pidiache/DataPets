@@ -5,7 +5,13 @@
 
 <p class="text-center txt4">Actualizar Datos</p>
 <div class="container3">
-    <img src="media/{{ user.profile.profile_picture }}" alt="">
+    
+    {% if user.profile.profile_picture.url %}
+        <img src="{{ user.profile.profile_picture.url }}" alt="{{ user.username }}">
+    {% else %}
+        <img src="{% static 'assets/img/default.jpg' %}" alt="{{ user.username }}">
+    {% endif %}
+        
     <form method="post" enctype='multipart/form-data'>
         {% csrf_token %}
         <div class="form-group">
