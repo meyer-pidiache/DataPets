@@ -19,9 +19,9 @@
         {% endif %}
         <div class="card-body" style="background-color:rgb(232, 226, 234);">
           <h5 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">{{ place.name }}</h5>
-          <p class="card-text1" style="font-family:cursive; font-size: medium;">Dirección: {{ place.direction }}</p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;">Teléfono: {{ place.phone_number }}</p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;">Horario de Atención: {{ place.opening_hours }}</p>
+          <p class="card-text1" style="font-family:cursive; font-size: medium;"><b>Dirección: </b>{{ place.direction }}</p>
+          <p class="card-text2" style="font-family:cursive; font-size: medium;"><b>Teléfono: </b>{{ place.phone_number }}</p>
+          <p class="card-text2" style="font-family:cursive; font-size: medium;"><b>Horario de Atención: </b>{{ place.opening_hours }}</p>
           <a href="{% url 'places:detail' place.id %}"
             class="btn btn-warning">Más información</a>
         </div>
