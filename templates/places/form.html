@@ -5,7 +5,7 @@
         <div class="form-group">
             <label>Foto</label><br>
             {% if edit %}
-                {% if place.photo.url %}
+                {% if place.photo %}
                     <img src="{{ place.photo.url }}" class="card-img-top" alt="{{ place.name }}">
                 {% else %}
                     <img src="{% static 'assets/img/perro1.jpeg' %}" class="card-img-top" alt="{{ place.name }}">
@@ -16,10 +16,10 @@
         <div class="form-group">
             <label>Logo</label>
             {% if edit %}
-                {% if place.logo.url %}
-                    <img src="{{ place.logo.url }}" width="70" class="rounded-circle mt-2">
+                {% if place.logo %}
+                    <img src="{{ place.logo.url }}" width="70" class="rounded-circle ms-3 my-2">
                 {% else %}
-                    <img src="{% static 'assets/img/huella1.jpeg' %}" width="70" class="rounded-circle mt-2">
+                    <img src="{% static 'assets/img/huella1.png' %}" width="70" class="rounded-circle ms-3 my-2">
                 {% endif %}
             {% endif %}
             {{ form.logo}}

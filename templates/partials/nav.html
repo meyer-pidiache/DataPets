@@ -32,7 +32,7 @@
         <li class="nav-itemv" style="display:flex;">
           <a class="nav-link me-3" href="{% url 'user:user' %}" style="position: relative; top: 5px; left: -5px;">
             ¡Hola 
-            {% if user.profile.profile_picture.url %}
+            {% if user.profile.profile_picture %}
               <img src="{{ user.profile.profile_picture.url }}" width="30" class="rounded-circle">
             {% else %}
               <img src="{% static 'assets/img/default.jpg' %}" width="30" class="rounded-circle">

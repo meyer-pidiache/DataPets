@@ -1,19 +1,20 @@
 {% extends 'layout.html' %}
+{% load static %}
 {% block title %}{{ place.name }}{% endblock title %}
 {% block main %}
 <div class="col">
   <div class="card h-100 w-100">
-    {% if place.photo.url %}
+    {% if place.photo %}
       <img src="{{ place.photo.url }}" class="card-img-top" alt="{{ place.name }}">
     {% else %}
       <img src="{% static 'assets/img/perro1.jpeg' %}" class="card-img-top" alt="{{ place.name }}">
     {% endif %}
     <div class="card-body" style="background-color:rgb(232, 226, 234);">
       <h1 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">
-        {% if place.logo.url %}
-          <img src="{{ place.logo.url }}" width="70" class="rounded-circle mt-2">
+        {% if place.logo %}
+          <img src="{{ place.logo.url }}" width="50" class="rounded-circle">
         {% else %}
-          <img src="{% static 'assets/img/huella1.jpeg' %}" width="70" class="rounded-circle mt-2">
+          <img src="{% static 'assets/img/huella1.png' %}" width="50" class="rounded-circle">
         {% endif %}
         {{ place.name }}
       </h1>

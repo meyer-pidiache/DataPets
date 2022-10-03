@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load static %}
 {% block title %}Actualizar información{% endblock title %}
 
 {% block main %}
@@ -6,7 +7,7 @@
 <p class="text-center txt4">Actualizar Datos</p>
 <div class="container3">
     
-    {% if user.profile.profile_picture.url %}
+    {% if user.profile.profile_picture %}
         <img src="{{ user.profile.profile_picture.url }}" alt="{{ user.username }}">
     {% else %}
         <img src="{% static 'assets/img/default.jpg' %}" alt="{{ user.username }}">

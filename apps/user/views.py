@@ -109,7 +109,7 @@ def update_user(request):
             messages.success(request, '¡Tu cuenta ha sido actualizada!')
             return redirect('user:user')
         else:
-            messages.success(request, 'Datos inválidos')
+            messages.warning(request, 'Número de teléfono inválido')
             return redirect('user:update_user')
 
     else:

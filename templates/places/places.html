@@ -12,7 +12,7 @@
     {% for place in places %}
     <div class="col">
       <div class="card h-100">
-        {% if place.photo.url %}
+        {% if place.photo %}
           <img src="{{ place.photo.url }}" class="card-img-top" alt="{{ place.name }}">
         {% else %}
           <img src="{% static 'assets/img/perro1.jpeg' %}" class="card-img-top" alt="{{ place.name }}">
