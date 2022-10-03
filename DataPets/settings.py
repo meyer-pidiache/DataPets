@@ -89,6 +89,7 @@ WSGI_APPLICATION = 'DataPets.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ATOMIC_REQUESTS': True,
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': dec('NAME'),
         'USER': dec('USER'),
