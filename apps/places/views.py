@@ -7,7 +7,7 @@ from .forms import PlaceForm
 
 def places(request):
     if request.user.id:
-        places = Place.objects.order_by('-visit_date')[:18]
+        places = Place.objects.order_by('-visit_date')[:21]
     else:
         places = Place.objects.order_by('-visit_date')[:3]
 

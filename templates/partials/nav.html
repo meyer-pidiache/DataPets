@@ -31,7 +31,12 @@
       {% if user.is_authenticated %}
         <li class="nav-itemv" style="display:flex;">
           <a class="nav-link me-3" href="{% url 'user:user' %}" style="position: relative; top: 5px; left: -5px;">
-            ¡Hola <img src="/media/{{ user.profile.profile_picture }}" width="30" class="rounded-circle">
+            ¡Hola 
+            {% if user.profile.profile_picture.url %}
+              <img src="{{ user.profile.profile_picture.url }}" width="30" class="rounded-circle">
+            {% else %}
+              <img src="{% static 'assets/img/default.jpg' %}" width="30" class="rounded-circle">
+            {% endif %}
             {{ user.username }}!
           </a>
           <a href="{% url 'user:logout_user' %}" type="button" class="btn btn-success">Cerrar Sesión</a>

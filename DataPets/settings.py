@@ -29,7 +29,7 @@ SECRET_KEY = dec('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (dec('DEBUG') == 'True')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'datapets.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'datapets.herokuapp.com', 'datapets-backend.herokuapp.com']
 
 
 # Application definition
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'apps.user.apps.UserConfig',
     'apps.places.apps.PlacesConfig',
 
+    'cloudinary_storage',
+    'cloudinary',
     'crispy_forms',
 ]
 
@@ -147,9 +149,17 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# Media settings
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': dec('CLOUD_NAME'),
+    'API_KEY': dec('API_KEY'),
+    'API_SECRET': dec('API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

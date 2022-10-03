@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from PIL import Image
+import cloudinary
+from cloudinary.models import CloudinaryField
 from apps.main.models import Review
 
 class Gender(models.Model):
@@ -16,25 +18,7 @@ class Profile(models.Model):
     phoneNumberRegex = RegexValidator(regex = r"^\+?57?\d{8,15}$")
     phone_number = models.CharField(validators = [phoneNumberRegex], max_length = 16, null=True, blank=True)
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE, null=True, blank=True)
-    profile_picture = models.ImageField(upload_to='media/profiles/',
-                                        default='media/profiles/default.jpg', 
-                                        null=True, blank=True, editable=True)
-    profile_picture_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default="200")
-    profile_picture_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default="200")
-
-    def __unicode__(self):
-        return "{0}".format(self.profile_picture)
-
-    def save(self, *args, **kwargs):
-        if not self.profile_picture:
-            return            
-
-        super(Profile, self).save(*args, **kwargs)
-        image = Image.open(self.profile_picture)
-        (width, height) = image.size     
-        size = ( 200, 200)
-        image = image.resize(size, Image.ANTIALIAS)
-        image.save(self.profile_picture.path)
+    profile_picture = models.ImageField(upload_to='media/profiles/', blank=True)
 
     def has_many_comments(self):
         reviews = len(Review.objects.filter(user=self.user))

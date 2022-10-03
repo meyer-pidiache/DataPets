@@ -12,7 +12,11 @@
     {% for place in places %}
     <div class="col">
       <div class="card h-100">
-        <img src="/media/{{ place.photo }}" class="card-img-top" alt="...">
+        {% if place.photo.url %}
+          <img src="{{ place.photo.url }}" class="card-img-top" alt="{{ place.name }}">
+        {% else %}
+          <img src="{% static 'assets/img/perro1.jpeg' %}" class="card-img-top" alt="{{ place.name }}">
+        {% endif %}
         <div class="card-body" style="background-color:rgb(232, 226, 234);">
           <h5 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">{{ place.name }}</h5>
           <p class="card-text1" style="font-family:cursive; font-size: medium;">Dirección: {{ place.direction }}</p>
