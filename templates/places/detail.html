@@ -43,8 +43,8 @@
             <div class="row g-0">
               <div class="col-md-4 y1 text-center text-black"
                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                {% if place.user.profile.profile_picture.url %}
-                  <img src="{{ place.user.profile.profile_picture }}" alt="Avatar" class="img-fluid my-5"
+                {% if place.user.profile.profile_picture %}
+                  <img src="{{ place.user.profile.profile_picture.url }}" alt="Avatar" class="img-fluid my-5"
                     style="width: 80px;" />
                 {% else %}
                   <img src="{% static 'assets/img/default.jpg' %}" alt="Avatar" class="img-fluid my-5"
