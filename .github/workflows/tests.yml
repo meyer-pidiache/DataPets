@@ -39,7 +39,6 @@ jobs:
           CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
           API_KEY: ${{ secrets.API_KEY }}
           API_SECRET: ${{ secrets.API_SECRET }}
-          CLOUDINARY_URL: ${{ secrets.CLOUDINARY_URL }}
           EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
       run: |
         python manage.py test
