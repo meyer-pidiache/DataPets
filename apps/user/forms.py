@@ -55,6 +55,7 @@ class UserUpdateForm(forms.ModelForm):
 
 class ProfileUpdateForm(forms.ModelForm):
     profile_picture = forms.ImageField(
+                        required=False,
                         widget=forms.FileInput(attrs={
                             'class':'form-control'})
     )

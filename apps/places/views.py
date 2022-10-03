@@ -23,8 +23,7 @@ def places(request):
             messages.success(request, f'¡Tu lugar ha sido agregado!')
             return redirect('places:places')
         else:
-            messages.error(request, 'Información inválida')
-            return redirect('places:places')
+            messages.warning(request, 'Información inválida, verifica el formato de tu número de teléfono o fecha de visita')
 
     context = {'form': form,
                'places': places,
