@@ -51,6 +51,9 @@ def sign_up(request):
             return redirect('main:home')
         else:
             user = User.objects.create_user(username=username, password=password, email=email)
+            user.save()
+            user = auth.authenticate(username=username, password=password)
+            auth.login(request, user)
             subject = 'Confirmación de correo electrónico'
             email_template_name = 'user/validation/email.txt'
             parameters = {
@@ -71,9 +74,8 @@ def sign_up(request):
                 messages.error(request, 'Ingresa una dirección de correo electrónico válida para darte acceso a todos nuestros servicios')
                 return redirect('main:home')
 
-            user.save()
-            messages.success(request, 'Usuario creado con éxito. Para empezar inicia sesión con tus credenciales')
-            return redirect('main:home')
+            messages.success(request, 'Usuario creado con éxito')
+            return redirect('user:user')
     else:
         return render(request, 'main/index.html')
 
