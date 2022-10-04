@@ -41,19 +41,16 @@ def sign_up(request):
             password = password1
         else:
             messages.warning(request, 'Las contraseñas no coinciden')
-            return redirect('/#login_section')
+            return redirect('main:home')
 
         if User.objects.filter(username=username).exists():
             messages.warning(request, 'Nombre de usuario ya está en uso')
-            return redirect('/#login_section')
+            return redirect('main:home')
         elif User.objects.filter(email=email).exists():
             messages.warning(request, 'Correo ya está en uso')
-            return redirect('/#login_section')
+            return redirect('main:home')
         else:
             user = User.objects.create_user(username=username, password=password, email=email)
-            user.save()
-            user = auth.authenticate(username=username, password=password)
-            auth.login(request, user)
             subject = 'Confirmación de correo electrónico'
             email_template_name = 'user/validation/email.txt'
             parameters = {
@@ -66,11 +63,17 @@ def sign_up(request):
                 'protocol': 'https',
             }
             email_body = render_to_string(email_template_name, parameters)
+
             try:
                 send_mail(subject, email_body, '', [email], fail_silently=False)
             except:
-                return HttpResponse('Header inválido')
-            return redirect('user:user')
+                user.delete()
+                messages.error(request, 'Ingresa una dirección de correo electrónico válida para darte acceso a todos nuestros servicios')
+                return redirect('main:home')
+
+            user.save()
+            messages.success(request, 'Usuario creado con éxito. Para empezar inicia sesión con tus credenciales')
+            return redirect('main:home')
     else:
         return render(request, 'main/index.html')
 
@@ -86,7 +89,7 @@ def sign_in(request):
             return redirect('user:user')
         else:
             messages.error(request, 'Nombre de usuario o contraseña inválido')
-            return redirect('/#login_section')
+            return redirect('main:home')
     else:
         return render(request, 'main/index.html')
 
@@ -146,7 +149,7 @@ def password_reset_request(request):
                     try:
                         send_mail(subject, email, '', [user.email], fail_silently=False)
                     except:
-                        return HttpResponse('Header inválido')
+                        return HttpResponse('Error al enviar el correo')
                     return redirect('user:password_reset_done')
             else:
                 return redirect('main:home')

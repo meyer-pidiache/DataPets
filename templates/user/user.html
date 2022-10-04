@@ -68,7 +68,7 @@
     {% if user.is_staff %}
       <br>{% include 'main/user_review.html' %}
     {% elif not user.profile.is_editor %}
-      <br><h3 style="text-align: center;">Verifica tu correo y actualiza tus datos para poder dejar una reseña</h3>
+      <br><h3 style="text-align: center;">Revisa la bandeja de entrada de tu correo electrónico y actualiza tus datos para poder dejar una reseña</h3>
     {% elif not user.first_name %}
       <br><h3 style="text-align: center;">Actualiza tus datos para poder dejar una reseña</h3>
     {% elif user.profile.has_many_comments %}

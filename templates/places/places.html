@@ -38,7 +38,7 @@
   {% elif not user.id %}
       <h3 style="text-align: center;">Regístrate o inicia sesión <a href="/">aquí</a> para tener acceso a todos los lugares</h3>
   {% elif not user.profile.is_editor %}
-    <h3 style="text-align: center;">Verifica tu correo y actualiza tus datos para poder agregar lugares</h3>
+    <h3 style="text-align: center;">Revisa la bandeja de entrada de tu correo electrónico y actualiza tus datos para poder agregar lugares</h3>
   {% elif not user.first_name %}
     <h3 style="text-align: center;">Actualiza tus datos para poder agregar lugares</h3>
   {% else %}
