@@ -10,10 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+from django.core.management.utils import get_random_secret_key
 from django.contrib.messages import constants as messages
 from pathlib import Path
 from decouple import config as dec
 import os
+import sys
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = dec('SECRET_KEY')
+SECRET_KEY = dec("SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (dec('DEBUG') == 'True')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = dec('ALLOWED_HOSTS').split(", ")
 
 
 # Application definition
@@ -87,20 +89,21 @@ WSGI_APPLICATION = 'DataPets.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': dec('NAME'),
-        'USER': dec('USER'),
-        'PASSWORD': dec('PASSWORD'),
-        'HOST': dec('HOST'),
-        'PORT': dec('PORT'),
-    }
-}
+DEVELOPMENT_MODE = (dec('DEVELOPMENT_MODE') == 'True')
 
-if "DATABASE_URL" in os.environ:
-    db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    DATABASES['default'].update(db_from_env)
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+else:
+    if dec("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(dec("DATABASE_URL")),
+    }
 
 
 # Password validation
