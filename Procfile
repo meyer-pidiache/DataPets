@@ -1,1 +1,0 @@
-web: gunicorn DataPets.wsgi:application --log-file -
