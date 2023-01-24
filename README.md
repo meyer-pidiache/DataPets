@@ -1,4 +1,4 @@
-# DataPets - Establecimientos amigables para mascotas
+# [DataPets](datapets.vercel.app) - Establecimientos amigables para mascotas
 
 ## Integrantes
 
@@ -6,4 +6,4 @@
 - Yesica Paola Mican Romero - Desarrollador Frontend
 - Joel Peña Cárdenas - Gestor de Proyecto
 - Sharom Julieth Ferreira Vela - Tester
-- Blanca Marlen Pidiache Tabaco - Desarrollador Backend
+- Meyer Albeiro Peña Pidiache - Desarrollador Backend / Frontend
