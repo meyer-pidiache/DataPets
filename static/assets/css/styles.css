@@ -79,6 +79,11 @@ h1 {
   color: white;
 }
 
+.carousel-text {
+  color: white;
+  text-shadow: 3px 3px 3px black;
+}
+
 .login-container {
   display: flex;
   padding: 20px;

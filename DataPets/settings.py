@@ -15,7 +15,6 @@ from django.contrib.messages import constants as messages
 from pathlib import Path
 from decouple import config as dec
 import os
-import sys
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
