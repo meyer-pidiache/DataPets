@@ -13,35 +13,35 @@
             <div class="col-md-4 y1 text-center text-black"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
               {% if user.profile.profile_picture %}
-                <img src="{{ user.profile.profile_picture.url }}" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                <img src="{{ user.profile.profile_picture.url }}" alt="Avatar" class="img-fluid mt-5" style="width: 80px;" />
               {% else %}
-                <img src="{% static 'assets/img/default.jpg' %}" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                <img src="{% static 'assets/img/default.jpg' %}" alt="Avatar" class="img-fluid mt-5" style="width: 80px;" />
               {% endif %}
-              <h5>{{ user.first_name }}</h5>
+              <h5 class="p-2">{{ user.username }}</h5>
             </div>
             <div class="col-md-8">
               <div class="card-body p-4">
                 <h6>Información</h6>
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
-                  <div class="col-6 mb-3">
+                  <div class="row mb-1">
                     <h6>Correo Electrónico</h6>
                     <p class="text-muted">{{ user.email }}</p>
                   </div>
                   {% if user.profile.phone_number %}
-                  <div class="col-6 mb-3">
+                  <div class="row mb-1">
                     <h6>Teléfono</h6>
                     <p class="text-muted">{{ user.profile.phone_number }}</p>
                   </div>
                   {% endif %}
                   {% if user.first_name %}
-                  <div class="col-6 mb-3">
+                  <div class="row mb-1">
                     <h6>Nombre</h6>
                     <p class="text-muted">{{ user.first_name }}</p>
                   </div>
                   {% endif %}
                   {% if user.last_name %}
-                  <div class="col-6 mb-3">
+                  <div class="row mb-1">
                     <h6>Apellido</h6>
                     <p class="text-muted">{{ user.last_name }}</p>
                   </div>
@@ -56,7 +56,7 @@
     </div>
     
     {% if user.is_staff %}
-      <br>{% include 'main/user_review.html' %}
+      <br>{% include 'user/user_review.html' %}
     {% elif not user.profile.is_editor %}
       <br><h3 style="text-align: center;">Revisa la bandeja de entrada de tu correo electrónico y actualiza tus datos para poder dejar una reseña</h3>
     {% elif not user.first_name %}
@@ -64,7 +64,7 @@
     {% elif user.profile.has_many_comments %}
       <br><h3 style="text-align: center;">Gracias por tus comentarios</h3>
     {% else %}
-      <br>{% include 'main/user_review.html' %}
+      <br>{% include 'user/user_review.html' %}
     {% endif %}
 
 </section>
