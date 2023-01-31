@@ -9,6 +9,6 @@ def home(request):
     }
     return render(request, 'main/index.html', context)
 
-def about_1(request):
+def about(request):
     context = {'title': '¿Qué es DataPets?'}
-    return render(request, 'main/about/about_1.html', context)
+    return render(request, 'main/about.html', context)

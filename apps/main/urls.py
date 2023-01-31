@@ -5,5 +5,5 @@ app_name = "main"
 
 urlpatterns = [
     path('', views.home, name="home"),
-    path('que_es_datapets/', views.about_1, name="about_1"),
+    path('about/', views.about, name="about"),
 ]

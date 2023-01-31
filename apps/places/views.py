@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.views import View
 from django.contrib import messages
 
 from .models import Place
@@ -29,6 +31,13 @@ def places(request):
                'places': places,
                'edit': False}
     return render(request, 'places/places.html', context)
+
+# class Add(View):
+#     template_name = "places/add.html"
+    # form = PlaceForm
+
+    # def get(self, request):
+    #     return HttpResponse(self.form)
 
 @login_required(login_url='/')
 def detail(request, place_id):

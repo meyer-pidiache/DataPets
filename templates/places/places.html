@@ -54,7 +54,7 @@
   {% if user.is_staff %} {% include 'places/form.html' %} {% elif not user.id %}
   <div class="m-5 p-5">
     <h3 style="text-align: center">
-      Regístrate o inicia sesión <a href="/">aquí</a> para tener acceso a todos
+      Regístrate o inicia sesión <a href="{% url 'main:home' %}">aquí</a> para tener acceso a todos
       los lugares
     </h3>
     {% elif not user.profile.is_editor %}
