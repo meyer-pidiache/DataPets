@@ -1,3 +1,16 @@
+.text-align-right {
+  text-align: right;
+}
+
+.border-radius-05 {
+  border-radius: .5rem;
+}
+
+.cursive {
+  font-family: cursive;
+  font-size: medium;
+}
+
 .btn-outline-primary {
   background-color: aqua;
 }
@@ -259,17 +272,13 @@ h1 {
 }
 .map-container {
   overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0;
   align-items: center;
+  height: 400px;
+  width: 100%;
 }
 .map-container iframe {
-  left: 0;
-  top: 0;
   height: 100%;
-  width: 80%;
-  position: absolute;
+  width: 100%;
 }
 .ab2 {
   font-family: cursive;

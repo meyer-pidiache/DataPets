@@ -2,27 +2,41 @@
 {% load static %}
 {% block title %}Perfil de usuario{% endblock title %}
 
-{% block main %}
 
-<section class="vh-100 mt-3">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center">
-      <div class="col col-md-6 mb-4 mb-lg-0">
-        <div class="card mb-3" style="border-radius: .5rem;"> 
+{% block main %}
+  
+<div class="container my-4 h-100 mt-3">
+  <div class="row">
+    <div class="col mb-4 mb-lg-0">
+      <div class="align-center">
+        <div class="card">
           <div class="row g-0">
-            <div class="col-md-4 y1 text-center text-black"
-              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+            <!-- First card items -->
+            <div
+              class="col-md-4 y1 text-center border-radius-05"
+            >
               {% if user.profile.profile_picture %}
-                <img src="{{ user.profile.profile_picture.url }}" alt="Avatar" class="img-fluid mt-5" style="width: 80px;" />
+              <img
+                src="{{ user.profile.profile_picture.url }}"
+                alt="Avatar"
+                class="img-fluid mt-5 border-radius-05"
+                width="50%"
+              />
               {% else %}
-                <img src="{% static 'assets/img/default.jpg' %}" alt="Avatar" class="img-fluid mt-5" style="width: 80px;" />
+              <img
+                src="{% static 'assets/img/default.jpg' %}"
+                alt="Avatar"
+                class="img-fluid mt-5 border-radius-05"
+                width="50%"
+              />
               {% endif %}
               <h5 class="p-2">{{ user.username }}</h5>
             </div>
+            <!-- Other card items -->
             <div class="col-md-8">
-              <div class="card-body p-4">
-                <h6>Información</h6>
-                <hr class="mt-0 mb-4">
+              <div class="card-body p-4 border-radius-05">
+                <h5>Información</h5>
+                <hr class="mt-0 mb-4" />
                 <div class="row pt-1">
                   <div class="row mb-1">
                     <h6>Correo Electrónico</h6>
@@ -33,40 +47,48 @@
                     <h6>Teléfono</h6>
                     <p class="text-muted">{{ user.profile.phone_number }}</p>
                   </div>
-                  {% endif %}
-                  {% if user.first_name %}
+                  {% endif %} {% if user.first_name %}
                   <div class="row mb-1">
                     <h6>Nombre</h6>
                     <p class="text-muted">{{ user.first_name }}</p>
                   </div>
-                  {% endif %}
-                  {% if user.last_name %}
+                  {% endif %} {% if user.last_name %}
                   <div class="row mb-1">
                     <h6>Apellido</h6>
                     <p class="text-muted">{{ user.last_name }}</p>
                   </div>
                   {% endif %}
                 </div>
-                <a href="{% url 'user:update_user' %}" class="btn btn-primary">Editar</a>
+                <div class="text-align-right">
+                  <a href="{% url 'user:update_user' %}" class="btn btn-primary"
+                    >Editar</a
+                  >
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-    {% if user.is_staff %}
-      <br>{% include 'user/user_review.html' %}
-    {% elif not user.profile.is_editor %}
-      <br><h3 style="text-align: center;">Revisa la bandeja de entrada de tu correo electrónico y actualiza tus datos para poder dejar una reseña</h3>
-    {% elif not user.first_name %}
-      <br><h3 style="text-align: center;">Actualiza tus datos para poder dejar una reseña</h3>
-    {% elif user.profile.has_many_comments %}
-      <br><h3 style="text-align: center;">Gracias por tus comentarios</h3>
-    {% else %}
-      <br>{% include 'user/user_review.html' %}
-    {% endif %}
+  </div>
 
-</section>
+  {% if user.is_staff %}
+  <br />{% include 'user/user_review.html' %} {% elif not user.profile.is_editor
+  %} <br />
+  <h3 style="text-align: center">
+    Revisa la bandeja de entrada de tu correo electrónico y actualiza tus datos
+    para poder dejar una reseña
+  </h3>
+  {% elif not user.first_name %}
+  <br />
+  <h3 style="text-align: center">
+    Actualiza tus datos para poder dejar una reseña
+  </h3>
+  {% elif user.profile.has_many_comments %}
+  <br />
+  <h3 style="text-align: center">Gracias por tus comentarios</h3>
+  {% else %}
+  <br />{% include 'user/user_review.html' %} {% endif %}
+</div>
 
 {% endblock main %}

@@ -12,6 +12,19 @@
       />
       DataPets
     </a>
+    <!-- Mobile button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar-Collapse -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left items -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -29,41 +42,40 @@
       {% if user.is_authenticated %}
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-
           <a
-          class="nav-link dropdown-toggle"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-        {% if user.profile.profile_picture %}
-        <!-- User profile -->
-        <img
-        src="{{ user.profile.profile_picture.url }}"
-        width="30"
-            class="rounded-circle"
-          />
-          {% else %}
-          <!-- Default user profile -->
-          <img
-            src="{% static 'assets/img/default.jpg' %}"
-            width="30"
-            class="rounded-circle"
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {% if user.profile.profile_picture %}
+            <!-- User profile -->
+            <img
+              src="{{ user.profile.profile_picture.url }}"
+              width="30"
+              class="rounded-circle"
+            />
+            {% else %}
+            <!-- Default user profile -->
+            <img
+              src="{% static 'assets/img/default.jpg' %}"
+              width="30"
+              class="rounded-circle"
             />
             {% endif %} {{ user.username }}
-        </a>
-        <!-- Dropdown items -->
-        <ul class="dropdown-menu">
-          <li>
-            <a class="dropdown-item" href="{% url 'user:user' %}">Perfil</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="{% url 'user:logout_user' %}"
-              >Cerrar sesión</a
-            >
-          </li>
-        </ul>
-      </li>
+          </a>
+          <!-- Dropdown items -->
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="{% url 'user:user' %}">Perfil</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'user:logout_user' %}"
+                >Cerrar sesión</a
+              >
+            </li>
+          </ul>
+        </li>
       </ul>
       <!-- Demo if user isn't authenticated -->
       {% else %}

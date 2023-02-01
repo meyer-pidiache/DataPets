@@ -2,67 +2,92 @@
 {% load static %}
 {% block title %}{{ place.name }}{% endblock title %}
 {% block main %}
+
 <div class="col">
   <div class="card h-100 w-100">
     {% if place.photo %}
-      <img src="{{ place.photo.url }}" class="card-img-top" alt="{{ place.name }}">
+    <img
+      src="{{ place.photo.url }}"
+      class="card-img-top"
+      alt="{{ place.name }}"
+    />
     {% else %}
-      <img src="{% static 'assets/img/perro1.jpeg' %}" class="card-img-top" alt="{{ place.name }}">
+    <img
+      src="{% static 'assets/img/perro1.jpeg' %}"
+      class="card-img-top"
+      alt="{{ place.name }}"
+    />
     {% endif %}
-    <div class="card-body" style="background-color:rgb(232, 226, 234);">
-      <h1 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">
-        {% if place.logo %}
-          <img src="{{ place.logo.url }}" width="50" class="rounded-circle">
-        {% else %}
-          <img src="{% static 'assets/img/huella1.png' %}" width="50" class="rounded-circle">
-        {% endif %}
+    <div class="card-body" style="background-color: rgb(232, 226, 234)">
+      <h1
+        class="card-title"
+        style="color: rgb(31, 31, 186); text-align: center"
+      >
+        <img
+          src="{% static 'assets/img/huella1.png' %}"
+          width="50"
+          class="rounded-circle"
+        />
         {{ place.name }}
       </h1>
-      <p class="card-text1" style="font-family:cursive; font-size: medium;"><b>Dirección: </b>
+      <p class="card-text cursive text-center">
+        <b>Dirección: </b>
         {{ place.direction }}
       </p>
-      <p class="card-text2" style="font-family:cursive; font-size: medium;"><b>Teléfono: </b>
-        {{ place.phone_number }}
-      </p>
-      <p class="card-text2" style="font-family:cursive; font-size: medium;"><b>Horario de Atención: </b>
-        {{ place.opening_hours }}
-      </p>
-      <p class="card-text2" style="font-family:cursive; font-size: medium;"><b>Fecha de visita: </b>
-        {{ place.visit_date }}
-      </p>
-      <div id="map-container-google-1" class="z-depth-1-half map-container mt-4 mx-5">
-        <iframe src="https://maps.google.com/maps?q={{ place.name }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          frameborder="0" style="border:0 " allowfullscreen></iframe>
+      <!-- Google Maps -->
+      <div class="row d-flex justify-content-center align-items-center">
+        <div
+          class="map-container col col-md-6 pt-1"
+        >
+          <iframe
+            src="https://maps.google.com/maps?q={{ place.name }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            frameborder="0"
+            style="border: 0"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
-      <br><br><br>
-      <h3 style="text-align: center;">Autor</h3>
-      <br><br>
+      <!-- Place author -->
+      <br /><br /><br />
+      <h3 style="text-align: center">Autor</h3>
+      <br /><br />
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col col-md-6 mb-4 mb-lg-0">
-          <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="card mb-3 border-radius-05">
             <div class="row g-0">
-              <div class="col-md-4 y1 text-center text-black"
-                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <div
+                class="col-md-4 y1 text-center text-black"
+                style="
+                  border-top-left-radius: 0.5rem;
+                  border-bottom-left-radius: 0.5rem;
+                "
+              >
                 {% if place.user.profile.profile_picture %}
-                  <img src="{{ place.user.profile.profile_picture.url }}" alt="Avatar" class="img-fluid my-5"
-                    style="width: 80px;" />
+                <img
+                  src="{{ place.user.profile.profile_picture.url }}"
+                  alt="Avatar"
+                  class="img-fluid mt-4 border-radius-05 mb-2"
+                  width="80px"
+                />
                 {% else %}
-                  <img src="{% static 'assets/img/default.jpg' %}" alt="Avatar" class="img-fluid my-5"
-                    style="width: 80px;" />
+                <img
+                  src="{% static 'assets/img/default.jpg' %}"
+                  alt="Avatar"
+                  class="img-fluid mt-4 border-radius-05 mb-2"
+                  width="80px"
+                />
                 {% endif %}
-                <h5>{{ place.user.username }}</h5>
+                <h6>{{ place.user.username }}</h6>
               </div>
               <div class="col-md-8">
-                <div class="card-body p-4">
+                <div class="card-body p-4 h-100">
                   <h6>Información</h6>
-                  <hr class="mt-0 mb-4">
+                  <hr class="mt-0 mb-4" />
                   <div class="row pt-1">
-
-                    <div class="col-6 mb-3">
-                      <h6>Nombre</h6>
-                      <h4 class="text-muted">{{ place.user.first_name }}</>
+                    <div class="col-12 mb-3">
+                      <h6>Fecha de visita</h6>
+                      <h4 class="text-muted">{{ place.visit_date }}</h4>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -71,13 +96,21 @@
         </div>
       </div>
       {% if place.user == user or user.is_staff %}
-      <br>
+      <br />
       <div class="text-center">
         <button type="button" class="btn btn-success">
-          <a href="{% url 'places:edit' place.id %}" style="text-decoration:none; color:white;">Editar</a>
+          <a
+            href="{% url 'places:edit' place.id %}"
+            style="text-decoration: none; color: white"
+            >Editar</a
+          >
         </button>
         <button type="button" class="btn btn-danger">
-          <a href="{% url 'places:delete' place.id %}" style="text-decoration:none; color:white;">Eliminar</a>
+          <a
+            href="{% url 'places:delete' place.id %}"
+            style="text-decoration: none; color: white"
+            >Eliminar</a
+          >
         </button>
       </div>
       {% endif %}

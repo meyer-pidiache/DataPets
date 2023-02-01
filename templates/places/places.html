@@ -24,11 +24,7 @@
       {% endif %}
       <div class="card-body">
         <h5 class="card-title">{{ place.name }}</h5>
-        <p class="card-text"><b>Dirección: </b>{{ place.direction }}</p>
-        <p class="card-text"><b>Teléfono: </b>{{ place.phone_number }}</p>
-        <p class="card-text">
-          <b>Horario de Atención: </b>{{ place.opening_hours }}
-        </p>
+          <p class="card-text text-center">{{ place.direction }}</p>
         <a href="{% url 'places:detail' place.id %}" class="btn btn-warning"
           >Más información</a
         >
@@ -53,5 +49,7 @@
   <h3 class="align-center">Actualiza tus datos para poder agregar lugares</h3>
 </div>
 {% else %}
-<a href="{% url 'places:add' %}" class="btn btn-primary">Agregar Lugar</a>
+<div class="text-align-right mx-2">
+  <a href="{% url 'places:add' %}" class="btn btn-primary">Agregar Lugar</a>
+</div>
 {% endif %} {% endblock main %}
