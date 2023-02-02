@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
-from PIL import Image
-import cloudinary
-from cloudinary.models import CloudinaryField
 from apps.main.models import Review
 
 class Gender(models.Model):
