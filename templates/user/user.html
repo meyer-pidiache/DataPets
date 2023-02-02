@@ -73,8 +73,9 @@
   </div>
 
   {% if user.is_staff %}
-  <br />{% include 'user/user_review.html' %} {% elif not user.profile.is_editor
-  %} <br />
+  <br />{% include 'user/user_review.html' %} 
+  {% elif not user.profile.is_editor %} 
+  <br />
   <h3 style="text-align: center">
     Revisa la bandeja de entrada de tu correo electrónico y actualiza tus datos
     para poder dejar una reseña
