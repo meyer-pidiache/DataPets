@@ -1,52 +1,88 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg t-3" style="background-color: #98f1dc ;">
-  <div class="container-fluid" style="display: flex;">
+<nav class="navbar navbar-expand-lg t-3" style="background-color: #98f1dc">
+  <div class="container-fluid" style="display: flex">
     <a class="navbar-brand mt-1" href="{% url 'places:places' %}">
-      <img src="{% static 'assets/img/huella1.png' %}" alt="" width="40" height="35"
-        class="d-inline-block align-text-top">
+      <img
+        src="{% static 'assets/img/huella1.png' %}"
+        alt=""
+        width="40"
+        height="35"
+        class="d-inline-block align-text-top"
+      />
       DataPets
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Mobile button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!-- Navbar-Collapse -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left items -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Acerca de nosotros
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/que_es_datapets/">¿Qué es DataPets?</a></li>
-            <li><a class="dropdown-item" href="/donde_encontrarnos/">¿Dónde encontrarnos?</a></li>
-            <li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'main:about' %}"
+            >¿Qué es DataPets?</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link disabled">El amor a las mascotas</a>
         </li>
       </ul>
-
+      <!-- Right items -->
+      <!-- User actions -->
       {% if user.is_authenticated %}
-        <li class="nav-itemv" style="display:flex;">
-          <a class="nav-link me-3" href="{% url 'user:user' %}" style="position: relative; top: 5px; left: -5px;">
-            ¡Hola 
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             {% if user.profile.profile_picture %}
-              <img src="{{ user.profile.profile_picture.url }}" width="30" class="rounded-circle">
+            <!-- User profile -->
+            <img
+              src="{{ user.profile.profile_picture.url }}"
+              width="30"
+              class="rounded-circle"
+            />
             {% else %}
-              <img src="{% static 'assets/img/default.jpg' %}" width="30" class="rounded-circle">
-            {% endif %}
-            {{ user.username }}!
+            <!-- Default user profile -->
+            <img
+              src="{% static 'assets/img/default.jpg' %}"
+              width="30"
+              class="rounded-circle"
+            />
+            {% endif %} {{ user.username }}
           </a>
-          <a href="{% url 'user:logout_user' %}" type="button" class="btn btn-success">Cerrar Sesión</a>
+          <!-- Dropdown items -->
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="{% url 'user:user' %}">Perfil</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'user:logout_user' %}"
+                >Cerrar sesión</a
+              >
+            </li>
+          </ul>
         </li>
-        {% else %}
-        <li class="nav-itemv" style="display:flex;">
-          <a href="{% url 'places:places' %}" type="button" class="btn btn-success">Demo</a>
-        </li>
+      </ul>
+      <!-- Demo if user isn't authenticated -->
+      {% else %}
+      <a href="{% url 'places:places' %}" type="button" class="btn btn-success"
+        >Demo</a
+      >
       {% endif %}
-
     </div>
   </div>
 </nav>

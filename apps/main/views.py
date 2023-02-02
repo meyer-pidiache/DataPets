@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.shortcuts import render
 from .models import Review
 
 def home(request):
@@ -10,15 +9,6 @@ def home(request):
     }
     return render(request, 'main/index.html', context)
 
-def about_1(request):
+def about(request):
     context = {'title': '¿Qué es DataPets?'}
-    return render(request, 'main/about/about_1.html', context)
-
-def about_2(request):
-    if request.method == 'POST':
-        user = request.POST['user_name']
-        messages.success(request, f'¡{user}, tu comentario ha sido guardado!')
-        return redirect('main:home')
-
-    context = {'title': '¿Dónde encontrarnos?'}
-    return render(request, 'main/about/about_2.html', context)
+    return render(request, 'main/about.html', context)

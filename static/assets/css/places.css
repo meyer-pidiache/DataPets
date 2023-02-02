@@ -1,1 +1,23 @@
-/* places */
+.card-img-top {
+  height: 13rem;
+  object-fit: cover;
+}
+
+.card-title {
+  color: rgb(31, 31, 186);
+  text-align: center;
+}
+
+.card-body {
+  background-color: rgb(232, 226, 234);
+}
+
+.card-text {
+  font-family: cursive;
+  font-size: medium;
+}
+
+.card-button {
+  position: relative;
+  text-align: right;
+}

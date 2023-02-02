@@ -108,11 +108,13 @@ def update_user(request):
         p_form = ProfileUpdateForm(request.POST,
                                 request.FILES,
                                 instance=request.user.profile)
+        # TODO Don't update password
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
             messages.success(request, '¡Tu cuenta ha sido actualizada!')
             return redirect('user:user')
+        # TODO Improve message errors
         else:
             messages.warning(request, 'Número de teléfono inválido')
             return redirect('user:update_user')

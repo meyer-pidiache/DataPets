@@ -3,47 +3,55 @@
 {% block title %}Lugares{% endblock title %}
 {% block main %}
 
-<p class="text-center mtx">Sitios que puedes visitar con tu peludito</p>
-<br>
-<br>
-<div class="container7">
+<p class="text-center mtx m-4">Sitios que puedes visitar con tu peludito</p>
 
-  <div class="row row-cols-1 row-cols-md-3 g-4" style="align-content: center;">
-    {% for place in places %}
-    <div class="col">
-      <div class="card h-100">
-        {% if place.photo %}
-          <img src="{{ place.photo.url }}" class="card-img-top" alt="{{ place.name }}">
-        {% else %}
-          <img src="{% static 'assets/img/perro1.jpeg' %}" class="card-img-top" alt="{{ place.name }}">
-        {% endif %}
-        <div class="card-body" style="background-color:rgb(232, 226, 234);">
-          <h5 class="card-title" style="color: rgb(31, 31, 186) ; text-align: center;">{{ place.name }}</h5>
-          <p class="card-text1" style="font-family:cursive; font-size: medium;"><b>Dirección: </b>{{ place.direction }}</p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;"><b>Teléfono: </b>{{ place.phone_number }}</p>
-          <p class="card-text2" style="font-family:cursive; font-size: medium;"><b>Horario de Atención: </b>{{ place.opening_hours }}</p>
-          <a href="{% url 'places:detail' place.id %}"
-            class="btn btn-warning">Más información</a>
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5 p-2">
+  {% for place in places %}
+  <div class="col">
+    <div class="card h-100 w-100">
+      {% if place.photo %}
+      <img
+        src="{{ place.photo.url }}"
+        class="card-img-top"
+        alt="{{ place.name }}"
+      />
+      {% else %}
+      <img
+        src="{% static 'assets/img/perro1.jpeg' %}"
+        class="card-img-top"
+        alt="{{ place.name }}"
+      />
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ place.name }}</h5>
+        <p class="card-text text-center">{{ place.direction }}</p>
+        <div class="card-button">
+          <a href="{% url 'places:detail' place.id %}" class="btn btn-warning"
+            >Más información</a
+          >
         </div>
       </div>
     </div>
-    {% endfor %}
   </div>
-
-  <br>
-  <br>
-
-  {% if user.is_staff %}
-    {% include 'places/form.html' %}
-  {% elif not user.id %}
-      <h3 style="text-align: center;">Regístrate o inicia sesión <a href="/">aquí</a> para tener acceso a todos los lugares</h3>
-  {% elif not user.profile.is_editor %}
-    <h3 style="text-align: center;">Revisa la bandeja de entrada de tu correo electrónico y actualiza tus datos para poder agregar lugares</h3>
-  {% elif not user.first_name %}
-    <h3 style="text-align: center;">Actualiza tus datos para poder agregar lugares</h3>
-  {% else %}
-    {% include 'places/form.html' %}
-  {% endif %}
-
+  {% endfor %}
 </div>
-{% endblock main %}
+<!-- Button -->
+{% if not user.id %}
+<div class="m-5 p-5">
+  <h3 class="align-center">
+    Regístrate o inicia sesión <a href="{% url 'main:home' %}">aquí</a> para
+    tener acceso a todos los lugares
+  </h3>
+  {% elif not user.profile.is_editor %}
+  <h3 class="align-center">
+    Revisa la bandeja de entrada de tu correo electrónico y actualiza tus datos
+    para poder agregar lugares
+  </h3>
+  {% elif not user.first_name %}
+  <h3 class="align-center">Actualiza tus datos para poder agregar lugares</h3>
+</div>
+{% else %}
+<div class="text-align-right mx-2">
+  <a href="{% url 'places:add' %}" class="btn btn-primary">Agregar Lugar</a>
+</div>
+{% endif %} {% endblock main %}

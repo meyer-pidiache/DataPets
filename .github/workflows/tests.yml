@@ -2,7 +2,7 @@ name: Django CI
 
 on:
   push:
-    branches: [ "main", "frontend", "backend" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -33,11 +33,6 @@ jobs:
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DEVELOPMENT_MODE: ${{ secrets.DEVELOPMENT_MODE }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          NAME: ${{ secrets.NAME }}
-          USER: ${{ secrets.USER }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          HOST: ${{ secrets.HOST }}
-          PORT: ${{ secrets.PORT }}
           CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
           API_KEY: ${{ secrets.API_KEY }}
           API_SECRET: ${{ secrets.API_SECRET }}

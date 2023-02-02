@@ -1,6 +1,6 @@
 <div id="login_section">
     <div class="container1">
-        <div class="login-container">
+        <div class="login-container mt-3">
             <div class="register">
                 <h2>Registrarse</h2>
                 <form action="/sign-up" method="post">
@@ -19,7 +19,7 @@
                         {% csrf_token %}
                         <input name="username" type="text" placeholder="Usuario" required>
                         <input name="password" type="password" placeholder="Contraseña" required>
-                        <a href="password_reset/" class="text-sm-start">¿Olvidó su contraseña?</a>
+                        <a href="{% url 'user:password_reset' %}" class="text-sm-start">¿Olvidó su contraseña?</a>
                         <button class="fb"><i class="fab fa-facebook-f"></i>Acceder</button>
                     </form>
                 </div>

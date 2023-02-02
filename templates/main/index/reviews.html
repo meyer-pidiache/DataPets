@@ -1,7 +1,7 @@
 {% load static %}
 <div class="row g-3 FC2" style=" background-color: #ffffff;">
     {% for review in reviews %}
-    <div class="col-md-12 col-lg-6 FC2_2" style=" font-family: cursive; ">
+    <div class="col-md-12 col-lg-6 FC2_2 cursive">
         <div class="FC2_1">
             {% if review.user.profile.profile_picture %}
                 <img src="{{ review.user.profile.profile_picture.url }}" alt="Avatar" class="per"/>
