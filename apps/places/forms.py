@@ -3,11 +3,6 @@ from apps.places.models import Place
 
 class PlaceForm(forms.ModelForm):
 
-    logo = forms.ImageField(
-                required=False,
-                widget=forms.FileInput(attrs={
-                        'class':'form-control'})
-    )
     photo = forms.ImageField(
                 required=False,
                 widget=forms.FileInput(attrs={
@@ -23,19 +18,9 @@ class PlaceForm(forms.ModelForm):
                         'placeholder': 'Dirección',
                         'class':'form-control'})
     )
-    phone_number = forms.CharField(
-                    required=True,
-                    widget=forms.TextInput(attrs={
-                            'placeholder': '(+57) Número de teléfono',
-                            'class':'form-control'})
-    )
-    opening_hours = forms.CharField(max_length=50, required=True,
-                widget=forms.TextInput(attrs={
-                        'placeholder': 'Horario de atención - (días / horas)',
-                        'class':'form-control'})
-    )
     visit_date = forms.DateField(
                 required=True,
+                # TODO MM/DD/YYYY
                 widget=forms.DateInput(attrs={
                         'placeholder': 'YYYY-MM-DD',
                         'class':'form-control'})
@@ -46,8 +31,5 @@ class PlaceForm(forms.ModelForm):
         fields = (
             'name', 
             'direction', 
-            'phone_number', 
-            'opening_hours', 
             'visit_date', 
-            'logo', 
             'photo',)

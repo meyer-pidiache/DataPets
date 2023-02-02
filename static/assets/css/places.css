@@ -1,3 +1,8 @@
+.card-img-top {
+  height: 13rem;
+  object-fit: cover;
+}
+
 .card-title {
   color: rgb(31, 31, 186);
   text-align: center;
@@ -10,4 +15,9 @@
 .card-text {
   font-family: cursive;
   font-size: medium;
+}
+
+.card-button {
+  position: relative;
+  text-align: right;
 }

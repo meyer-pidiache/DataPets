@@ -24,10 +24,12 @@
       {% endif %}
       <div class="card-body">
         <h5 class="card-title">{{ place.name }}</h5>
-          <p class="card-text text-center">{{ place.direction }}</p>
-        <a href="{% url 'places:detail' place.id %}" class="btn btn-warning"
-          >Más información</a
-        >
+        <p class="card-text text-center">{{ place.direction }}</p>
+        <div class="card-button">
+          <a href="{% url 'places:detail' place.id %}" class="btn btn-warning"
+            >Más información</a
+          >
+        </div>
       </div>
     </div>
   </div>
