@@ -1,9 +1,13 @@
 {% extends 'layout.html' %}
 {% load static %}
-{% block title %}Lugares{% endblock title %}
+{% block head %}
+<title>Lugares</title>
+<link rel="stylesheet" href="{% static 'assets/css/places.css' %}">
+{% endblock head %}
+
 {% block main %}
 
-<p class="text-center mtx m-4">Sitios que puedes visitar con tu peludito</p>
+<p class="text-center-title mtx m-4">Sitios que puedes visitar con tu peludito</p>
 
 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5 p-2">
   {% for place in places %}

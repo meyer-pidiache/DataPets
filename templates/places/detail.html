@@ -1,6 +1,9 @@
 {% extends 'layout.html' %}
 {% load static %}
-{% block title %}{{ place.name }}{% endblock title %}
+{% block head %}
+<title>{{ place.name }}</title>
+{% endblock head %}
+
 {% block main %}
 
 <div class="col">
@@ -37,7 +40,7 @@
       <!-- Google Maps -->
       <div class="row d-flex justify-content-center align-items-center">
         <div
-          class="map-container col col-md-6 pt-1"
+          class="map-container col col-md-10 pt-1"
         >
           <iframe
             src="https://maps.google.com/maps?q={{ place.name }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -66,14 +69,14 @@
                 <img
                   src="{{ place.user.profile.profile_picture.url }}"
                   alt="Avatar"
-                  class="img-fluid mt-4 border-radius-05 mb-2"
+                  class="img-fluid mt-4 pt-3 border-radius-05 mb-2"
                   width="80px"
                 />
                 {% else %}
                 <img
                   src="{% static 'assets/img/default.jpg' %}"
                   alt="Avatar"
-                  class="img-fluid mt-4 border-radius-05 mb-2"
+                  class="img-fluid mt-4 pt-3 border-radius-05 mb-2"
                   width="80px"
                 />
                 {% endif %}
