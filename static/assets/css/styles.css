@@ -59,7 +59,8 @@ h1 {
   margin-block-end: 10px;
 }
 
-.text-center {
+.text-center-title {
+  text-align: center;
   font-size: 500%;
   color: rgb(0, 0, 0);
   text-shadow: 3px 3px 2px rgb(255, 255, 255);
@@ -272,9 +273,8 @@ h1 {
 }
 .map-container {
   overflow: hidden;
-  align-items: center;
   height: 400px;
-  width: 100%;
+  width: 800px;
 }
 .map-container iframe {
   height: 100%;

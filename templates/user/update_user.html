@@ -1,10 +1,12 @@
 {% extends 'layout.html' %}
 {% load static %}
-{% block title %}Actualizar información{% endblock title %}
+{% block head %}
+<title>Actualizar información</title>
+{% endblock head %}
 
 {% block main %}
 
-<p class="text-center txt4">Actualizar Datos</p>
+<p class="text-center-title txt4">Actualizar Datos</p>
 <div class="container3">
     
     {% if user.profile.profile_picture %}
